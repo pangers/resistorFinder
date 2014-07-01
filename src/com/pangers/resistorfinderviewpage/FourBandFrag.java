@@ -165,17 +165,17 @@ public class FourBandFrag extends Fragment implements
 		return models;
 	}
 	
-	public View getViewByPosition(int position, ListView listView) {
-	    final int firstListItemPosition = listView.getFirstVisiblePosition();
-	    final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
-
-	    if (position < firstListItemPosition || position > lastListItemPosition ) {
-	        return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
-	    } else {
-	        final int childIndex = position - firstListItemPosition;
-	        return listView.getChildAt(childIndex);
-	    }
-	}
+//	public View getViewByPosition(int position, ListView listView) {
+//	    final int firstListItemPosition = listView.getFirstVisiblePosition();
+//	    final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+//
+//	    if (position < firstListItemPosition || position > lastListItemPosition ) {
+//	        return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
+//	    } else {
+//	        final int childIndex = position - firstListItemPosition;
+//	        return listView.getChildAt(childIndex);
+//	    }
+//	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
