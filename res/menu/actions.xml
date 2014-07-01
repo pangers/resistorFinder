@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" ><item
+        android:id="@+id/colourcode"
+        android:icon="@drawable/ic_menu_copy_holo_light"
+        android:title="@string/colourcode">
+    </item>
+    <item
+        android:id="@+id/help"
+        android:icon="@drawable/ic_menu_help"
+        android:title="@string/help" android:showAsAction="never">
+    </item>
+    <item
+        android:id="@+id/about"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:title="@string/about" android:showAsAction="never">
+    </item>
+    
+
+</menu>
