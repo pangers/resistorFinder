@@ -3,9 +3,9 @@ package com.pangers.resistorfinderviewpage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,27 +37,29 @@ public class FiveBandFrag extends Fragment implements
 
 	public static FiveBandFrag newInstance() {
 		FiveBandFrag fiveBF = new FiveBandFrag();
-		
+
 		return fiveBF;
 	}
-	
+
 	static String getTitle(Context ctxt) {
 		return ctxt.getString(R.string.fivebandresistor);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View result = inflater.inflate(R.layout.fivebandlayoutfrag, container, false);
+		//setRetainInstance(true);
+
+		View result = inflater.inflate(R.layout.fivebandlayoutfrag, container,
+				false);
 
 		return result;
 	}
-	
-	
-	
+
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState); 
+		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
 		super.onCreate(savedInstanceState);
 
@@ -81,6 +83,14 @@ public class FiveBandFrag extends Fragment implements
 
 		for (int q = 0; q < lists.size(); q++) {
 			lists.get(q).setOnItemClickListener(this);
+		}
+
+		// Retain radio button selections after configuration change
+		for (int w = 0; w < bandRowNumber.length; w++) {
+			if (bandRowNumber[w] != unselected) {
+				adapters.get(w).setSelectedIndex(bandRowNumber[w]);
+				adapters.get(w).notifyDataSetChanged();
+			}
 		}
 	}
 

@@ -3,9 +3,10 @@ package com.pangers.resistorfinderviewpage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class FourBandFrag extends Fragment implements
@@ -33,27 +35,30 @@ public class FourBandFrag extends Fragment implements
 
 	static FourBandFrag newInstance() {
 		FourBandFrag fourBF = new FourBandFrag();
-		
+
 		return fourBF;
 	}
-	
+
 	static String getTitle(Context ctxt) {
 		return ctxt.getString(R.string.fourbandresistor);
 	}
-	
+
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		View result = inflater.inflate(R.layout.fourbandlayoutfrag, container, false);
+
+		//setRetainInstance(true);
+		View result = inflater.inflate(R.layout.fourbandlayoutfrag, container,
+				false);
 
 		return result;
 	}
-	
-	
+
 	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState); 
+		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
-		
+
 		resultView = (TextView) getActivity().findViewById(R.id.FourResultView);
 
 		lists.add((ListView) getActivity().findViewById(R.id.FourListView1));
@@ -73,10 +78,26 @@ public class FourBandFrag extends Fragment implements
 		for (int q = 0; q < lists.size(); q++) {
 			lists.get(q).setOnItemClickListener(this);
 		}
+
+		for (int i = 0; i < lists.size(); i++) {
+			lists.get(i).setAdapter(adapters.get(i));
+		}
+
+		// Retain radio button selections after configuration change
+		for (int w = 0; w < bandRowNumber.length; w++) {
+			if (bandRowNumber[w] != unselected) {
+//				View rowView = getViewByPosition(bandRowNumber[w], lists.get(w));
+//				RadioButton radiobutton = (RadioButton) rowView
+//						.findViewById(R.id.radioButton);
+//				Log.d(TAG, "rad button should be on");
+//				radiobutton.setChecked(true);
+//				adapters.get(w).setSelectedIndex(bandRowNumber[w]);
+//				adapters.get(w).setRetrievedIndex(bandRowNumber[w]);
+//				adapters.get(w).notifyDataSetChanged();
+			}
+		}
 	}
 
-	
-	
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 		inflater.inflate(R.menu.actions, menu);
 		super.onCreateOptionsMenu(menu, inflater);
@@ -142,6 +163,18 @@ public class FourBandFrag extends Fragment implements
 			models.add(new Model(R.drawable.rectangleviolet, ""));
 		}
 		return models;
+	}
+	
+	public View getViewByPosition(int position, ListView listView) {
+	    final int firstListItemPosition = listView.getFirstVisiblePosition();
+	    final int lastListItemPosition = firstListItemPosition + listView.getChildCount() - 1;
+
+	    if (position < firstListItemPosition || position > lastListItemPosition ) {
+	        return listView.getAdapter().getView(position, listView.getChildAt(position), listView);
+	    } else {
+	        final int childIndex = position - firstListItemPosition;
+	        return listView.getChildAt(childIndex);
+	    }
 	}
 
 	@Override

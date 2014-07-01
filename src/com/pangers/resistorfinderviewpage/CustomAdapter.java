@@ -3,6 +3,7 @@ package com.pangers.resistorfinderviewpage;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,8 +45,8 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 					.findViewById(R.id.colourvalue);
 			RadioButton radiobutton = (RadioButton) rowView
 					.findViewById(R.id.radioButton);
-
-			// Check the correct radio button
+			
+			// Check the correct radio button when person selects a listview item
 			if (selectedIndex == position) {
 				radiobutton.setChecked(true);
 			} else {
@@ -69,5 +70,5 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	public void setSelectedIndex(int index) {
 		selectedIndex = index;
 	}
-
+	
 }
