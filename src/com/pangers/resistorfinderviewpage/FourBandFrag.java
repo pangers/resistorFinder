@@ -84,20 +84,18 @@ public class FourBandFrag extends Fragment implements
 			lists.get(q).setOnItemClickListener(this);
 		}
 
-		for (int i = 0; i < lists.size(); i++) {
-			lists.get(i).setAdapter(adapters.get(i));
-		}
 		// Retain radio button selections after configuration change
 		for (int p = 0; p < lists.size(); p++) {
-			((CustomAdapter) lists.get(p).getAdapter()).setBandRowNumber(bandRowNumber);	
+			((CustomAdapter) lists.get(p).getAdapter())
+					.setBandRowNumber(bandRowNumber);
 		}
-		//Retain results textview after configuration change
-		if (bandRowNumber[0] != unselected
-				|| bandRowNumber[1] != unselected
+		// Retain results textview after configuration change
+		if (bandRowNumber[0] != unselected || bandRowNumber[1] != unselected
 				|| bandRowNumber[2] != unselected
 				|| bandRowNumber[3] != unselected) {
-			
-			textDisplayer.lastSelection(resultView, lastUserSelectionList, lastUserSelectionRow);
+
+			textDisplayer.lastSelection(resultView, lastUserSelectionList,
+					lastUserSelectionRow);
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
@@ -110,8 +108,7 @@ public class FourBandFrag extends Fragment implements
 				results = new ResistorCalculator().calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
-			
-			
+
 		}
 
 	}
@@ -196,9 +193,9 @@ public class FourBandFrag extends Fragment implements
 			// update selection array
 			bandRowNumber[0] = position;
 			bandRowNumberTrue[0] = position;
-		    lastUserSelectionList = 0;
+			lastUserSelectionList = 0;
 
-			textDisplayer.lastSelection(resultView, 0, position);
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
 
 			// which bands still need to be selected
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
@@ -222,7 +219,7 @@ public class FourBandFrag extends Fragment implements
 			bandRowNumber[1] = position;
 			bandRowNumberTrue[1] = position;
 			lastUserSelectionList = 1;
-			textDisplayer.lastSelection(resultView, 1, position);
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
@@ -239,7 +236,7 @@ public class FourBandFrag extends Fragment implements
 			bandRowNumber[2] = position;
 			bandRowNumberTrue[2] = position - 2;
 			lastUserSelectionList = 2;
-			textDisplayer.lastSelection(resultView, 2, position);
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
@@ -256,7 +253,7 @@ public class FourBandFrag extends Fragment implements
 			bandRowNumber[3] = position;
 			bandRowNumberTrue[3] = position;
 			lastUserSelectionList = 3;
-			textDisplayer.lastSelection(resultView, 3, position);
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);

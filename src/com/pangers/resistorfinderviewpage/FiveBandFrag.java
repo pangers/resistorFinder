@@ -27,6 +27,9 @@ public class FiveBandFrag extends Fragment implements
 	// ArrayLists to hold the lists and adapters
 	private ArrayList<ListView> lists = new ArrayList<ListView>();
 	private ArrayList<CustomAdapter> adapters = new ArrayList<CustomAdapter>();
+	private TextDisplayer textDisplayer = new TextDisplayer();
+	private ArrayList<Integer> uncheckedBands = new ArrayList<Integer>();
+	private BigDecimal[] results = new BigDecimal[2];
 
 	// number to symbolise band is unselected
 	final int unselected = -17;
@@ -34,6 +37,10 @@ public class FiveBandFrag extends Fragment implements
 	// Row numbers selected by user
 	private int[] bandRowNumber = { unselected, unselected, unselected,
 			unselected, unselected };
+	private int[] bandRowNumberTrue = { unselected, unselected, unselected,
+			unselected, unselected };
+	private int lastUserSelectionRow;
+	private int lastUserSelectionList;
 
 	public static FiveBandFrag newInstance() {
 		FiveBandFrag fiveBF = new FiveBandFrag();
@@ -49,7 +56,7 @@ public class FiveBandFrag extends Fragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setRetainInstance(true);
+		setRetainInstance(true);
 
 		View result = inflater.inflate(R.layout.fivebandlayoutfrag, container,
 				false);
@@ -84,12 +91,32 @@ public class FiveBandFrag extends Fragment implements
 		for (int q = 0; q < lists.size(); q++) {
 			lists.get(q).setOnItemClickListener(this);
 		}
-
 		// Retain radio button selections after configuration change
-		for (int w = 0; w < bandRowNumber.length; w++) {
-			if (bandRowNumber[w] != unselected) {
-				adapters.get(w).setSelectedIndex(bandRowNumber[w]);
-				adapters.get(w).notifyDataSetChanged();
+		for (int p = 0; p < lists.size(); p++) {
+			((CustomAdapter) lists.get(p).getAdapter())
+					.setBandRowNumber(bandRowNumber);
+		}
+
+		// Retain results textview after configuration change
+		if (bandRowNumber[0] != unselected || bandRowNumber[1] != unselected
+				|| bandRowNumber[2] != unselected
+				|| bandRowNumber[3] != unselected
+				|| bandRowNumber[4] != unselected) {
+
+			textDisplayer.lastSelection(resultView, lastUserSelectionList,
+					lastUserSelectionRow);
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
+					unselected);
+			textDisplayer.unselectedBands(resultView, uncheckedBands);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+			if (bandRowNumberTrue[0] != unselected
+					&& bandRowNumberTrue[1] != unselected
+					&& bandRowNumberTrue[2] != unselected
+					&& bandRowNumberTrue[3] != unselected
+					&& bandRowNumberTrue[4] != unselected) {
+				// calculate resistance and tolerance and show result
+				results = new ResistorCalculator().calculate(bandRowNumberTrue);
+				textDisplayer.resistanceDisplay(resultView, results);
 			}
 		}
 	}
@@ -168,28 +195,25 @@ public class FiveBandFrag extends Fragment implements
 		((CustomAdapter) parent.getAdapter()).setSelectedIndex(position);
 		((CustomAdapter) parent.getAdapter()).notifyDataSetChanged();
 
-		// ArrayList to keep track of unchecked bands
-		ArrayList<Integer> uncheckedBands = new ArrayList<Integer>();
-
-		// array to hold resistance and tolerance
-		BigDecimal[] results = new BigDecimal[2];
-
-		// Carries out changes to the textview
-		TextDisplayer textDisplayer = new TextDisplayer();
+		lastUserSelectionRow = position;
 
 		switch (parent.getId()) {
 		case R.id.FiveListView1:
 			// update selection array
 			bandRowNumber[0] = position;
-			textDisplayer.lastSelection(resultView, 1, position);
+			bandRowNumberTrue[0] = position;
+			lastUserSelectionList = 0;
+
+			textDisplayer.lastSelection(resultView, lastUserSelectionList,
+					position);
 
 			// which bands still need to be selected
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumber,
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
 
 			// current values selected by user
-			textDisplayer.bandRowValues(resultView, bandRowNumber);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 
 			// if all rows are selected
 			if (bandRowNumber[0] != unselected
@@ -198,71 +222,79 @@ public class FiveBandFrag extends Fragment implements
 					&& bandRowNumber[3] != unselected
 					&& bandRowNumber[4] != unselected) {
 				// calculate resistance and tolerance and show result
-				results = new ResistorCalculator().calculate(bandRowNumber);
+				results = new ResistorCalculator().calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
 			break;
 		case R.id.FiveListView2:
 			bandRowNumber[1] = position;
-			textDisplayer.lastSelection(resultView, 2, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumber,
+			bandRowNumberTrue[1] = position;
+			lastUserSelectionList = 1;
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumber);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 			if (bandRowNumber[0] != unselected
 					&& bandRowNumber[1] != unselected
 					&& bandRowNumber[2] != unselected
 					&& bandRowNumber[3] != unselected
 					&& bandRowNumber[4] != unselected) {
-				results = new ResistorCalculator().calculate(bandRowNumber);
+				results = new ResistorCalculator().calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
 			break;
 		case R.id.FiveListView3:
 			bandRowNumber[2] = position;
-			textDisplayer.lastSelection(resultView, 3, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumber,
+			bandRowNumberTrue[2] = position;
+			lastUserSelectionList = 2;
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumber);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 			if (bandRowNumber[0] != unselected
 					&& bandRowNumber[1] != unselected
 					&& bandRowNumber[2] != unselected
 					&& bandRowNumber[3] != unselected
 					&& bandRowNumber[4] != unselected) {
-				results = new ResistorCalculator().calculate(bandRowNumber);
+				results = new ResistorCalculator().calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
 			break;
 		case R.id.FiveListView4:
-			bandRowNumber[3] = position - 2;
-			textDisplayer.lastSelection(resultView, 4, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumber,
+			bandRowNumber[3] = position;
+			bandRowNumberTrue[3] = position - 2;
+			lastUserSelectionList = 3;
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumber);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 			if (bandRowNumber[0] != unselected
 					&& bandRowNumber[1] != unselected
 					&& bandRowNumber[2] != unselected
 					&& bandRowNumber[3] != unselected
 					&& bandRowNumber[4] != unselected) {
-				results = new ResistorCalculator().calculate(bandRowNumber);
+				results = new ResistorCalculator().calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
 			break;
 		case R.id.FiveListView5:
 			bandRowNumber[4] = position;
-			textDisplayer.lastSelection(resultView, 5, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumber,
+			bandRowNumberTrue[4] = position;
+			lastUserSelectionList = 4;
+			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
+			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumber);
+			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 			if (bandRowNumber[0] != unselected
 					&& bandRowNumber[1] != unselected
 					&& bandRowNumber[2] != unselected
 					&& bandRowNumber[3] != unselected
 					&& bandRowNumber[4] != unselected) {
-				results = (new ResistorCalculator()).calculate(bandRowNumber);
+				results = (new ResistorCalculator()).calculate(bandRowNumberTrue);
 				textDisplayer.resistanceDisplay(resultView, results);
 			}
 			break;

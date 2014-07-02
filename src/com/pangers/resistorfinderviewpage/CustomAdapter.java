@@ -16,7 +16,7 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	private int selectedIndex = -1;
 	private final int unselected = -17;
 	private int[] bandRowNumber = { unselected, unselected, unselected,
-			unselected };
+			unselected, unselected };
 
 	public CustomAdapter(Context context, ArrayList<Model> modelsArrayList) {
 		super(context, R.layout.listitem, modelsArrayList);
@@ -85,6 +85,36 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 					holder.radiobutton.setChecked(true);
 				}
 				break;
+			case R.id.FiveListView1:
+				if (bandRowNumber[0] != unselected
+						&& bandRowNumber[0] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FiveListView2:
+				if (bandRowNumber[1] != unselected
+						&& bandRowNumber[1] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FiveListView3:
+				if (bandRowNumber[2] != unselected
+						&& bandRowNumber[2] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FiveListView4:
+				if (bandRowNumber[3] != unselected
+						&& bandRowNumber[3] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FiveListView5:
+				if (bandRowNumber[4] != unselected
+						&& bandRowNumber[4] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
 			}
 
 			// Fill the rowView with data
@@ -108,7 +138,9 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	}
 
 	public void setBandRowNumber(int[] bandRowNumber) {
-		this.bandRowNumber = bandRowNumber;
+		for (int i = 0; i < bandRowNumber.length; i++) {
+			this.bandRowNumber[i] = bandRowNumber[i];
+		}
 	}
 
 }
