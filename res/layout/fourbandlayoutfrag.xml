@@ -146,21 +146,21 @@
         <ListView
             android:id="@+id/FourListView2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:descendantFocusability="beforeDescendants" />
 
         <ListView
             android:id="@+id/FourListView3"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:descendantFocusability="beforeDescendants" />
 
         <ListView
             android:id="@+id/FourListView4"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:descendantFocusability="beforeDescendants" />
 

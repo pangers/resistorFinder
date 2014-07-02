@@ -8,12 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 
 public class CustomAdapter extends ArrayAdapter<Model> {
 
+	static final String TAG = "FourBandFrag";
 	private final Context context;
 	private final ArrayList<Model> modelsArrayList;
 	private int selectedIndex = -1;
@@ -34,34 +32,43 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 
 		// Get rowView from inflater
 		View rowView = null;
+
+		// ViewHolder to recycles inner views
+		ViewHolder holder;
+
 		// if data is a list item
 		if (!modelsArrayList.get(position).isHeader()) {
-			rowView = inflater.inflate(R.layout.listitem, parent, false);
-
-			// Get band colour, and title
-			ImageView imageview = (ImageView) rowView
-					.findViewById(R.id.bandcolour);
-			TextView titleview = (TextView) rowView
-					.findViewById(R.id.colourvalue);
-			RadioButton radiobutton = (RadioButton) rowView
-					.findViewById(R.id.radioButton);
-			
-			// Check the correct radio button when person selects a listview item
-			if (selectedIndex == position) {
-				radiobutton.setChecked(true);
+			if (convertView == null) {
+				rowView = inflater.inflate(R.layout.listitem, parent, false);
+				holder = new ViewHolder(rowView);
+				rowView.setTag(holder);
+				
 			} else {
-				radiobutton.setChecked(false);
+				rowView = convertView;
+				holder = (ViewHolder) convertView.getTag();
+			}
+
+			// Check the correct radio button when person selects a listview
+			// item
+			if (selectedIndex == position) {
+				holder.radiobutton.setChecked(true);
+				
+			} else {
+				holder.radiobutton.setChecked(false);
+				
 			}
 
 			// Fill the rowView with data
-			imageview.setImageResource(modelsArrayList.get(position).getIcon());
-			titleview.setText(modelsArrayList.get(position).getTitle());
+			holder.imageview.setImageResource(modelsArrayList.get(position)
+					.getIcon());
+			holder.titleview.setText(modelsArrayList.get(position).getTitle());
 
 			// if data is a list heading
 		} else {
-			rowView = inflater.inflate(R.layout.listheader, parent, false);
-			TextView titleview = (TextView) rowView.findViewById(R.id.header);
-			titleview.setText(modelsArrayList.get(position).getTitle());
+			// rowView = inflater.inflate(R.layout.listheader, parent, false);
+			// TextView titleview = (TextView)
+			// rowView.findViewById(R.id.header);
+			// titleview.setText(modelsArrayList.get(position).getTitle());
 		}
 
 		return rowView;
@@ -70,5 +77,5 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	public void setSelectedIndex(int index) {
 		selectedIndex = index;
 	}
-	
+
 }
