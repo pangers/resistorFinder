@@ -30,6 +30,16 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+		if (parent.getId() == R.id.FourListView1) {
+			Log.d(TAG, "Parent is ListView: 0");
+		} else if (parent.getId() == R.id.FourListView2) {
+			Log.d(TAG, "Parent is ListView: 1");
+		} else if (parent.getId() == R.id.FourListView3) {
+			Log.d(TAG, "Parent is ListView: 2");
+		} else if (parent.getId() == R.id.FourListView4) {
+			Log.d(TAG, "Parent is ListView: 3");
+		}
+
 		// Get rowView from inflater
 		View rowView = null;
 
@@ -42,7 +52,7 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 				rowView = inflater.inflate(R.layout.listitem, parent, false);
 				holder = new ViewHolder(rowView);
 				rowView.setTag(holder);
-				
+
 			} else {
 				rowView = convertView;
 				holder = (ViewHolder) convertView.getTag();
@@ -52,10 +62,10 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 			// item
 			if (selectedIndex == position) {
 				holder.radiobutton.setChecked(true);
-				
+
 			} else {
 				holder.radiobutton.setChecked(false);
-				
+
 			}
 
 			// Fill the rowView with data

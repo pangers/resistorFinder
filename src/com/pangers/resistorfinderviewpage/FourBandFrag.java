@@ -192,7 +192,7 @@ public class FourBandFrag extends Fragment implements
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
 
 			// current values selected by user
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+			textDisplayer.bandRowValues(resultView, bandRowNumber);
 
 			// if all rows are selected
 			if (bandRowNumberTrue[0] != unselected
@@ -211,7 +211,7 @@ public class FourBandFrag extends Fragment implements
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+			textDisplayer.bandRowValues(resultView, bandRowNumber);
 			if (bandRowNumberTrue[0] != unselected
 					&& bandRowNumberTrue[1] != unselected
 					&& bandRowNumberTrue[2] != unselected
@@ -243,7 +243,7 @@ public class FourBandFrag extends Fragment implements
 			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
 					unselected);
 			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+			textDisplayer.bandRowValues(resultView, bandRowNumber);
 			if (bandRowNumberTrue[0] != unselected
 					&& bandRowNumberTrue[1] != unselected
 					&& bandRowNumberTrue[2] != unselected
