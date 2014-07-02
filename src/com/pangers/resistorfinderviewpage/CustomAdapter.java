@@ -3,7 +3,6 @@ package com.pangers.resistorfinderviewpage;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,9 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	private final Context context;
 	private final ArrayList<Model> modelsArrayList;
 	private int selectedIndex = -1;
+	private final int unselected = -17;
+	private int[] bandRowNumber = { unselected, unselected, unselected,
+			unselected };
 
 	public CustomAdapter(Context context, ArrayList<Model> modelsArrayList) {
 		super(context, R.layout.listitem, modelsArrayList);
@@ -29,16 +31,6 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 		// Create Layout inflater - inflates xml and gives us a view
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-		if (parent.getId() == R.id.FourListView1) {
-			Log.d(TAG, "Parent is ListView: 0");
-		} else if (parent.getId() == R.id.FourListView2) {
-			Log.d(TAG, "Parent is ListView: 1");
-		} else if (parent.getId() == R.id.FourListView3) {
-			Log.d(TAG, "Parent is ListView: 2");
-		} else if (parent.getId() == R.id.FourListView4) {
-			Log.d(TAG, "Parent is ListView: 3");
-		}
 
 		// Get rowView from inflater
 		View rowView = null;
@@ -65,7 +57,34 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 
 			} else {
 				holder.radiobutton.setChecked(false);
+			}
 
+			// Check correct radio button after configuration change
+			switch (parent.getId()) {
+			case R.id.FourListView1:
+				if (bandRowNumber[0] != unselected
+						&& bandRowNumber[0] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FourListView2:
+				if (bandRowNumber[1] != unselected
+						&& bandRowNumber[1] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FourListView3:
+				if (bandRowNumber[2] != unselected
+						&& bandRowNumber[2] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
+			case R.id.FourListView4:
+				if (bandRowNumber[3] != unselected
+						&& bandRowNumber[3] == position) {
+					holder.radiobutton.setChecked(true);
+				}
+				break;
 			}
 
 			// Fill the rowView with data
@@ -86,6 +105,10 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 
 	public void setSelectedIndex(int index) {
 		selectedIndex = index;
+	}
+
+	public void setBandRowNumber(int[] bandRowNumber) {
+		this.bandRowNumber = bandRowNumber;
 	}
 
 }

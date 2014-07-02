@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -83,19 +82,11 @@ public class FourBandFrag extends Fragment implements
 		for (int i = 0; i < lists.size(); i++) {
 			lists.get(i).setAdapter(adapters.get(i));
 		}
-
 		// Retain radio button selections after configuration change
-		for (int w = 0; w < bandRowNumber.length; w++) {
-			if (bandRowNumber[w] != unselected) {
-				lists.get(w).performItemClick(
-						lists.get(w).getAdapter()
-								.getView(bandRowNumber[w], null, null),
-						bandRowNumber[w],
-						lists.get(w).getAdapter().getItemId(bandRowNumber[w]));
-				Log.d(TAG, "Rechecking radio button " + bandRowNumber[w] + " from ListView " + w);
-				
-			}
+		for (int p = 0; p < lists.size(); p++) {
+			((CustomAdapter) lists.get(p).getAdapter()).setBandRowNumber(bandRowNumber);	
 		}
+
 	}
 
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
