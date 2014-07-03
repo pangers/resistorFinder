@@ -85,6 +85,7 @@ public final class R {
         public static final int help=0x7f050006;
         public static final int resistorfinder=0x7f050000;
         public static final int secondband=0x7f050002;
+        public static final int tab=0x7f05000c;
         public static final int thirdband=0x7f050003;
     }
     public static final class style {

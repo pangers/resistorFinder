@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="resistorfinder">Resistor Finder ViewPage</string>
-	<string name="firstband">1st Band</string>
-	<string name="secondband">2nd Band</string>
-	<string name="thirdband">3rd Band</string>
-	<string name="fourthband">4th Band</string>
-	<string name="fifthband">5th band</string>
+	<string name="resistorfinder">Resistor Finder</string>
+	<string name="firstband">Band 1</string>
+	<string name="secondband">Band 2</string>
+	<string name="thirdband">Band 3</string>
+	<string name="fourthband">Band 4</string>
+	<string name="fifthband">Band 5</string>
 	<string name="help">Help</string>
 	<string name="colourcode">Colour Code</string>
 	<string name="about">About</string>
-	<string name="fivebandresistor">Five Band Resistor</string>
-	<string name="fourbandresistor">Four Band Resistor</string>
+	<string name="fivebandresistor">5 bands</string>
+	<string name="fourbandresistor">4 bands</string>
 	<string name="changemode">Change Mode</string>
+	<string name="tab">\u0009</string>
 
 </resources>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,16 +26,14 @@ public class FourBandFrag extends Fragment implements
 
 	private ArrayList<ListView> lists = new ArrayList<ListView>();
 	private ArrayList<CustomAdapter> adapters = new ArrayList<CustomAdapter>();
-	private TextDisplayer textDisplayer = new TextDisplayer();
+	private TextDisplayer textDisplayer;
 	private ArrayList<Integer> uncheckedBands = new ArrayList<Integer>();
 	private BigDecimal[] results = new BigDecimal[2];
 
 	final int unselected = -17;
 
-	private int[] bandRowNumber = { unselected, unselected, unselected,
-			unselected };
-	private int[] bandRowNumberTrue = { unselected, unselected, unselected,
-			unselected };
+	private int[] bandRowNumber = { 1, 0, 5, 1 };
+	private int[] bandRowNumberTrue = { 1, 0, 3, 1 };
 	private int lastUserSelectionRow;
 	private int lastUserSelectionList;
 
@@ -63,6 +62,8 @@ public class FourBandFrag extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
+		
+		textDisplayer = new TextDisplayer(getActivity());
 
 		resultView = (TextView) getActivity().findViewById(R.id.FourResultView);
 
@@ -89,27 +90,22 @@ public class FourBandFrag extends Fragment implements
 			((CustomAdapter) lists.get(p).getAdapter())
 					.setBandRowNumber(bandRowNumber);
 		}
-		// Retain results textview after configuration change
-		if (bandRowNumber[0] != unselected || bandRowNumber[1] != unselected
-				|| bandRowNumber[2] != unselected
-				|| bandRowNumber[3] != unselected) {
+		// // Retain results textview after configuration change
+		// if (bandRowNumberTrue[0] != unselected || bandRowNumberTrue[1] !=
+		// unselected
+		// || bandRowNumberTrue[2] != unselected
+		// || bandRowNumberTrue[3] != unselected) {
 
-			textDisplayer.lastSelection(resultView, lastUserSelectionList,
-					lastUserSelectionRow);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
-					unselected);
-			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
-			if (bandRowNumberTrue[0] != unselected
-					&& bandRowNumberTrue[1] != unselected
-					&& bandRowNumberTrue[2] != unselected
-					&& bandRowNumberTrue[3] != unselected) {
-				// calculate resistance and tolerance and show result
-				results = new ResistorCalculator().calculate(bandRowNumberTrue);
-				textDisplayer.resistanceDisplay(resultView, results);
-			}
-
+		if (bandRowNumberTrue[0] != unselected
+				&& bandRowNumberTrue[1] != unselected
+				&& bandRowNumberTrue[2] != unselected
+				&& bandRowNumberTrue[3] != unselected) {
+			// calculate resistance and tolerance and show result
+			results = new ResistorCalculator().calculate(bandRowNumberTrue);
+			textDisplayer.resistanceDisplay(resultView, results);
 		}
+
+		// }
 
 	}
 
@@ -145,37 +141,37 @@ public class FourBandFrag extends Fragment implements
 
 		switch (whichBand) {
 		case 1:
-			models.add(new Model(R.drawable.rectangleblack, ""));
-			models.add(new Model(R.drawable.rectanglebrown, ""));
-			models.add(new Model(R.drawable.rectanglered, ""));
-			models.add(new Model(R.drawable.rectangleorange, ""));
-			models.add(new Model(R.drawable.rectangleyellow, ""));
-			models.add(new Model(R.drawable.rectanglegreen, ""));
-			models.add(new Model(R.drawable.rectangleblue, ""));
-			models.add(new Model(R.drawable.rectangleviolet, ""));
-			models.add(new Model(R.drawable.rectanglegrey, ""));
-			models.add(new Model(R.drawable.rectanglewhite, ""));
+			models.add(new Model(R.drawable.rectangleblack, Html.fromHtml("0")));
+			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("1")));
+			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("2")));
+			models.add(new Model(R.drawable.rectangleorange, Html.fromHtml("3")));
+			models.add(new Model(R.drawable.rectangleyellow, Html.fromHtml("4")));
+			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("5")));
+			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("6")));
+			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("7")));
+			models.add(new Model(R.drawable.rectanglegrey, Html.fromHtml("8")));
+			models.add(new Model(R.drawable.rectanglewhite, Html.fromHtml("9")));
 			break;
 		case 2:
-			models.add(new Model(R.drawable.rectanglesilver, ""));
-			models.add(new Model(R.drawable.rectanglegold, ""));
-			models.add(new Model(R.drawable.rectangleblack, ""));
-			models.add(new Model(R.drawable.rectanglebrown, ""));
-			models.add(new Model(R.drawable.rectanglered, ""));
-			models.add(new Model(R.drawable.rectangleorange, ""));
-			models.add(new Model(R.drawable.rectangleyellow, ""));
-			models.add(new Model(R.drawable.rectanglegreen, ""));
-			models.add(new Model(R.drawable.rectangleblue, ""));
-			models.add(new Model(R.drawable.rectangleviolet, ""));
+			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("10<sup><small>-2</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("10<sup><small>-1</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblack, Html.fromHtml("10<sup><small>0<small></sup>")));
+			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("10<sup><small>1</small></sup>")));
+			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("10<sup><small>2</small></sup>")));
+			models.add(new Model(R.drawable.rectangleorange, Html.fromHtml("10<sup><small>3</small></sup>")));
+			models.add(new Model(R.drawable.rectangleyellow, Html.fromHtml("10<sup><small>4</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("10<sup><small>5</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("10<sup><small>6</small></sup>")));
+			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("10<sup><small>7</small></sup>")));
 			break;
 		case 3:
-			models.add(new Model(R.drawable.rectanglesilver, ""));
-			models.add(new Model(R.drawable.rectanglegold, ""));
-			models.add(new Model(R.drawable.rectanglebrown, ""));
-			models.add(new Model(R.drawable.rectanglered, ""));
-			models.add(new Model(R.drawable.rectanglegreen, ""));
-			models.add(new Model(R.drawable.rectangleblue, ""));
-			models.add(new Model(R.drawable.rectangleviolet, ""));
+			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("\u00B110%")));
+			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("\u00B15%")));
+			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("\u00B11%")));
+			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("\u00B12%")));
+			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("\u00B10.5%")));
+			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("\u00B10.25%")));
+			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("\u00B10.1%")));
 		}
 		return models;
 	}
@@ -192,18 +188,10 @@ public class FourBandFrag extends Fragment implements
 		case R.id.FourListView1:
 			// update selection array
 			bandRowNumber[0] = position;
+			((CustomAdapter) lists.get(0).getAdapter())
+					.setBandRowNumber(bandRowNumber);
 			bandRowNumberTrue[0] = position;
 			lastUserSelectionList = 0;
-
-			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
-
-			// which bands still need to be selected
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
-					unselected);
-			textDisplayer.unselectedBands(resultView, uncheckedBands);
-
-			// current values selected by user
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
 
 			// if all rows are selected
 			if (bandRowNumberTrue[0] != unselected
@@ -217,13 +205,11 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView2:
 			bandRowNumber[1] = position;
+			((CustomAdapter) lists.get(1).getAdapter())
+					.setBandRowNumber(bandRowNumber);
 			bandRowNumberTrue[1] = position;
 			lastUserSelectionList = 1;
-			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
-					unselected);
-			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+
 			if (bandRowNumberTrue[0] != unselected
 					&& bandRowNumberTrue[1] != unselected
 					&& bandRowNumberTrue[2] != unselected
@@ -234,13 +220,11 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView3:
 			bandRowNumber[2] = position;
+			((CustomAdapter) lists.get(2).getAdapter())
+					.setBandRowNumber(bandRowNumber);
 			bandRowNumberTrue[2] = position - 2;
 			lastUserSelectionList = 2;
-			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
-					unselected);
-			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+
 			if (bandRowNumberTrue[0] != unselected
 					&& bandRowNumberTrue[1] != unselected
 					&& bandRowNumberTrue[2] != unselected
@@ -251,13 +235,11 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView4:
 			bandRowNumber[3] = position;
+			((CustomAdapter) lists.get(3).getAdapter())
+					.setBandRowNumber(bandRowNumber);
 			bandRowNumberTrue[3] = position;
 			lastUserSelectionList = 3;
-			textDisplayer.lastSelection(resultView, lastUserSelectionList, position);
-			uncheckedBands = (new BandChecker()).bandCheck(bandRowNumberTrue,
-					unselected);
-			textDisplayer.unselectedBands(resultView, uncheckedBands);
-			textDisplayer.bandRowValues(resultView, bandRowNumberTrue);
+
 			if (bandRowNumberTrue[0] != unselected
 					&& bandRowNumberTrue[1] != unselected
 					&& bandRowNumberTrue[2] != unselected

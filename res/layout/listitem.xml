@@ -16,16 +16,16 @@
     <TextView
         android:id="@+id/colourvalue"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_toRightOf="@id/bandcolour"
-        android:gravity="center_vertical"
-        android:textSize="18dp" />
+        android:gravity="center_vertical" />
 
     <RadioButton
         android:id="@+id/radioButton"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/colourvalue"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/bandcolour"
+        android:layout_below="@id/colourvalue"
         android:clickable="false"
         android:focusable="false"
         android:gravity="center_vertical" />

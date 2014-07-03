@@ -22,8 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/firstband"
-                android:textSize="16dp" />
+                android:text="@string/firstband" />
 
             <!-- divider -->
 
@@ -53,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/secondband"
-                android:textSize="16dp" />
+                android:text="@string/secondband" />
 
             <View
                 android:layout_width="match_parent"
@@ -82,8 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/thirdband"
-                android:textSize="16dp" />
+                android:text="@string/thirdband" />
 
             <View
                 android:layout_width="match_parent"
@@ -111,8 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/fourthband"
-                android:textSize="16dp" />
+                android:text="@string/fourthband" />
 
             <View
                 android:layout_width="match_parent"
@@ -140,8 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/fifthband"
-                android:textSize="16dp" />
+                android:text="@string/fifthband" />
 
             <View
                 android:layout_width="match_parent"
@@ -162,7 +157,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="3"
         android:orientation="horizontal" >
 
         <ListView
@@ -217,8 +212,7 @@
         <TextView
             android:id="@+id/FiveResultView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="This is the 5 band textView!" />
+            android:layout_height="match_parent" />
     </RelativeLayout>
 
 </LinearLayout>
