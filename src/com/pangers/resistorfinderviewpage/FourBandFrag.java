@@ -3,6 +3,7 @@ package com.pangers.resistorfinderviewpage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -62,7 +64,7 @@ public class FourBandFrag extends Fragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		setHasOptionsMenu(true);
-		
+
 		textDisplayer = new TextDisplayer(getActivity());
 
 		resultView = (TextView) getActivity().findViewById(R.id.FourResultView);
@@ -153,25 +155,42 @@ public class FourBandFrag extends Fragment implements
 			models.add(new Model(R.drawable.rectanglewhite, Html.fromHtml("9")));
 			break;
 		case 2:
-			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("10<sup><small>-2</small></sup>")));
-			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("10<sup><small>-1</small></sup>")));
-			models.add(new Model(R.drawable.rectangleblack, Html.fromHtml("10<sup><small>0<small></sup>")));
-			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("10<sup><small>1</small></sup>")));
-			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("10<sup><small>2</small></sup>")));
-			models.add(new Model(R.drawable.rectangleorange, Html.fromHtml("10<sup><small>3</small></sup>")));
-			models.add(new Model(R.drawable.rectangleyellow, Html.fromHtml("10<sup><small>4</small></sup>")));
-			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("10<sup><small>5</small></sup>")));
-			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("10<sup><small>6</small></sup>")));
-			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("10<sup><small>7</small></sup>")));
+			models.add(new Model(R.drawable.rectanglesilver, Html
+					.fromHtml("10<sup><small>-2</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegold, Html
+					.fromHtml("10<sup><small>-1</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblack, Html
+					.fromHtml("10<sup><small>0<small></sup>")));
+			models.add(new Model(R.drawable.rectanglebrown, Html
+					.fromHtml("10<sup><small>1</small></sup>")));
+			models.add(new Model(R.drawable.rectanglered, Html
+					.fromHtml("10<sup><small>2</small></sup>")));
+			models.add(new Model(R.drawable.rectangleorange, Html
+					.fromHtml("10<sup><small>3</small></sup>")));
+			models.add(new Model(R.drawable.rectangleyellow, Html
+					.fromHtml("10<sup><small>4</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegreen, Html
+					.fromHtml("10<sup><small>5</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblue, Html
+					.fromHtml("10<sup><small>6</small></sup>")));
+			models.add(new Model(R.drawable.rectangleviolet, Html
+					.fromHtml("10<sup><small>7</small></sup>")));
 			break;
 		case 3:
-			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("\u00B110%")));
-			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("\u00B15%")));
-			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("\u00B11%")));
-			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("\u00B12%")));
-			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("\u00B10.5%")));
-			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("\u00B10.25%")));
-			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("\u00B10.1%")));
+			models.add(new Model(R.drawable.rectanglesilver, Html
+					.fromHtml("\u00B110%")));
+			models.add(new Model(R.drawable.rectanglegold, Html
+					.fromHtml("\u00B15%")));
+			models.add(new Model(R.drawable.rectanglebrown, Html
+					.fromHtml("\u00B11%")));
+			models.add(new Model(R.drawable.rectanglered, Html
+					.fromHtml("\u00B12%")));
+			models.add(new Model(R.drawable.rectanglegreen, Html
+					.fromHtml("\u00B10.5%")));
+			models.add(new Model(R.drawable.rectangleblue, Html
+					.fromHtml("\u00B10.25%")));
+			models.add(new Model(R.drawable.rectangleviolet, Html
+					.fromHtml("\u00B10.1%")));
 		}
 		return models;
 	}
@@ -182,7 +201,6 @@ public class FourBandFrag extends Fragment implements
 
 		((CustomAdapter) parent.getAdapter()).setSelectedIndex(position);
 		((CustomAdapter) parent.getAdapter()).notifyDataSetChanged();
-		
 
 		lastUserSelectionRow = position;
 		switch (parent.getId()) {

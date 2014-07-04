@@ -43,31 +43,37 @@ public final class R {
         public static final int rectangleyellow=0x7f02000f;
     }
     public static final class id {
-        public static final int FiveListView1=0x7f080000;
-        public static final int FiveListView2=0x7f080001;
-        public static final int FiveListView3=0x7f080002;
-        public static final int FiveListView4=0x7f080003;
-        public static final int FiveListView5=0x7f080004;
-        public static final int FiveResultView=0x7f080005;
-        public static final int FourListView1=0x7f080006;
-        public static final int FourListView2=0x7f080007;
-        public static final int FourListView3=0x7f080008;
-        public static final int FourListView4=0x7f080009;
-        public static final int FourResultView=0x7f08000a;
-        public static final int about=0x7f080011;
-        public static final int bandcolour=0x7f08000c;
-        public static final int colourcode=0x7f08000f;
-        public static final int header=0x7f08000b;
-        public static final int help=0x7f080010;
-        public static final int pager=0x7f08000e;
-        public static final int radioButton=0x7f08000d;
+        public static final int FiveListView1=0x7f080003;
+        public static final int FiveListView2=0x7f080004;
+        public static final int FiveListView3=0x7f080005;
+        public static final int FiveListView4=0x7f080006;
+        public static final int FiveListView5=0x7f080007;
+        public static final int FiveResultView=0x7f080008;
+        public static final int FourListView1=0x7f080009;
+        public static final int FourListView2=0x7f08000a;
+        public static final int FourListView3=0x7f08000b;
+        public static final int FourListView4=0x7f08000c;
+        public static final int FourResultView=0x7f08000d;
+        public static final int about=0x7f080014;
+        public static final int bandcolour=0x7f08000f;
+        public static final int colourcode=0x7f080012;
+        public static final int header=0x7f08000e;
+        public static final int help=0x7f080013;
+        public static final int pager=0x7f080011;
+        public static final int radioButton=0x7f080010;
+        public static final int toleranceselect=0x7f080002;
+        public static final int valueentryframe=0x7f080000;
+        public static final int valueresultframe=0x7f080001;
     }
     public static final class layout {
-        public static final int fivebandlayoutfrag=0x7f030000;
-        public static final int fourbandlayoutfrag=0x7f030001;
-        public static final int listheader=0x7f030002;
-        public static final int listitem=0x7f030003;
-        public static final int mainactivity=0x7f030004;
+        public static final int byvalueactivity=0x7f030000;
+        public static final int byvalueentryfrag=0x7f030001;
+        public static final int byvalueresultfrag=0x7f030002;
+        public static final int fivebandlayoutfrag=0x7f030003;
+        public static final int fourbandlayoutfrag=0x7f030004;
+        public static final int listheader=0x7f030005;
+        public static final int listitem=0x7f030006;
+        public static final int mainactivity=0x7f030007;
     }
     public static final class menu {
         public static final int actions=0x7f070000;
@@ -82,10 +88,12 @@ public final class R {
         public static final int fourbandresistor=0x7f05000a;
         public static final int fourthband=0x7f050004;
         public static final int help=0x7f050006;
+        public static final int resistance=0x7f05000d;
         public static final int resistorfinder=0x7f050000;
         public static final int secondband=0x7f050002;
         public static final int tab=0x7f05000c;
         public static final int thirdband=0x7f050003;
+        public static final int tolerance=0x7f05000e;
     }
     public static final class style {
         /** 

@@ -14,5 +14,7 @@
 	<string name="fourbandresistor">4 bands</string>
 	<string name="changemode">Change Mode</string>
 	<string name="tab">\u0009</string>
+	<string name ="resistance">Resistance</string>
+	<string name="tolerance">Tolerance</string>
 
 </resources>
