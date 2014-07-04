@@ -17,20 +17,12 @@ public class ByValueActivity extends FragmentActivity implements
 	private ArrayAdapter<String> dropDownAdapter = null;
 
 	final static String TAG = "valueEntryFrag";
-	
+
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
-	
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.byvalueactivity);
-		
-		if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-			
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.valueentryframe, new valueEntryFrag())
-					.add(R.id.valueresultframe, new valueResultFrag()).commit();
-		}
 
 		actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -42,13 +34,37 @@ public class ByValueActivity extends FragmentActivity implements
 				android.R.layout.simple_spinner_dropdown_item, dropDownMenu);
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
 		actionBar.setSelectedNavigationItem(1);
+		
+		if (findViewById(R.id.valueentryframe) != null) {
+			if (savedInstanceState != null) {
+				Log.d(TAG, "second time created");
+				return;
+			}
+			Log.d(TAG, "first time created");
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.valueentryframe, new valueEntryFrag())
+					.add(R.id.valueresultframe, new valueResultFrag()).commit();
+		}
+
+		// if
+		// (getSupportFragmentManager().findFragmentById(R.id.valueentryframe)
+		// == null) {
+		//
+		// getSupportFragmentManager().beginTransaction()
+		// .add(R.id.valueentryframe, new valueEntryFrag())
+		// .add(R.id.valueresultframe, new valueResultFrag()).commit();
+		// }
+
+		
 	}
-	
+
 	@Override
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
+		Log.d(TAG, "I make it here");
+		Log.d(TAG, "DROP_DOWN_SELECTION value: " +state.getInt(DROP_DOWN_SELECTION));
 		actionBar.setSelectedNavigationItem(state.getInt(DROP_DOWN_SELECTION));
-		
+
 	}
 
 	@Override
@@ -62,7 +78,7 @@ public class ByValueActivity extends FragmentActivity implements
 		}
 		return false;
 	}
-	
+
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
