@@ -193,6 +193,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#F3F3F3"
             android:descendantFocusability="beforeDescendants" />
     </LinearLayout>
 
@@ -215,7 +216,6 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:textSize="18sp" />
-
     </RelativeLayout>
 
 </LinearLayout>
