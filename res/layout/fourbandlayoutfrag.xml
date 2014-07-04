@@ -22,8 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/firstband"
-                android:textSize="16dp" />
+                android:text="@string/firstband" />
 
             <!-- divider -->
 
@@ -53,8 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/secondband"
-                android:textSize="16dp" />
+                android:text="@string/secondband" />
 
             <View
                 android:layout_width="match_parent"
@@ -82,8 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/thirdband"
-                android:textSize="16dp" />
+                android:text="@string/thirdband" />
 
             <View
                 android:layout_width="match_parent"
@@ -111,8 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/fourthband"
-                android:textSize="16dp" />
+                android:text="@string/fourthband" />
 
             <View
                 android:layout_width="match_parent"
@@ -133,7 +129,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
+        android:layout_weight="5"
         android:orientation="horizontal" >
 
         <ListView
@@ -162,8 +158,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="#F3F3F3"
             android:descendantFocusability="beforeDescendants" />
-
     </LinearLayout>
 
     <RelativeLayout
@@ -183,7 +179,8 @@
             android:id="@+id/FourResultView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="This is the 4 band textView!" />
+            android:gravity="center"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </LinearLayout>

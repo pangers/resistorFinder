@@ -3,6 +3,7 @@ package com.pangers.resistorfinderviewpage;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 
 		// ViewHolder to recycles inner views
 		ViewHolder holder;
-
+	
 		// if data is a list item
 		if (!modelsArrayList.get(position).isHeader()) {
 			if (convertView == null) {
@@ -115,12 +116,14 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 					holder.radiobutton.setChecked(true);
 				}
 				break;
+			default:
+				holder.radiobutton.setChecked(false);
 			}
 
 			// Fill the rowView with data
 			holder.imageview.setImageResource(modelsArrayList.get(position)
 					.getIcon());
-			holder.titleview.setText(modelsArrayList.get(position).getTitle());
+			//holder.titleview.setText(modelsArrayList.get(position).getTitle());
 
 			// if data is a list heading
 		} else {
@@ -140,6 +143,12 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	public void setBandRowNumber(int[] bandRowNumber) {
 		for (int i = 0; i < bandRowNumber.length; i++) {
 			this.bandRowNumber[i] = bandRowNumber[i];
+		}
+	}
+	
+	public void resetBandRowNumber(int[] bandRowNumber) {
+		for (int i = 0; i < bandRowNumber.length; i++) {
+			this.bandRowNumber[i] = unselected;
 		}
 	}
 
