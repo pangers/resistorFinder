@@ -3,6 +3,7 @@ package com.pangers.resistorfinderviewpage;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 
 		// ViewHolder to recycles inner views
 		ViewHolder holder;
-
+	
 		// if data is a list item
 		if (!modelsArrayList.get(position).isHeader()) {
 			if (convertView == null) {
@@ -122,7 +123,7 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 			// Fill the rowView with data
 			holder.imageview.setImageResource(modelsArrayList.get(position)
 					.getIcon());
-			holder.titleview.setText(modelsArrayList.get(position).getTitle());
+			//holder.titleview.setText(modelsArrayList.get(position).getTitle());
 
 			// if data is a list heading
 		} else {

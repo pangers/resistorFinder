@@ -54,14 +54,13 @@ public final class R {
         public static final int FourListView3=0x7f080008;
         public static final int FourListView4=0x7f080009;
         public static final int FourResultView=0x7f08000a;
-        public static final int about=0x7f080012;
+        public static final int about=0x7f080011;
         public static final int bandcolour=0x7f08000c;
-        public static final int colourcode=0x7f080010;
-        public static final int colourvalue=0x7f08000d;
+        public static final int colourcode=0x7f08000f;
         public static final int header=0x7f08000b;
-        public static final int help=0x7f080011;
-        public static final int pager=0x7f08000f;
-        public static final int radioButton=0x7f08000e;
+        public static final int help=0x7f080010;
+        public static final int pager=0x7f08000e;
+        public static final int radioButton=0x7f08000d;
     }
     public static final class layout {
         public static final int fivebandlayoutfrag=0x7f030000;
