@@ -182,14 +182,17 @@ public class FourBandFrag extends Fragment implements
 
 		((CustomAdapter) parent.getAdapter()).setSelectedIndex(position);
 		((CustomAdapter) parent.getAdapter()).notifyDataSetChanged();
+		
 
 		lastUserSelectionRow = position;
 		switch (parent.getId()) {
 		case R.id.FourListView1:
 			// update selection array
 			bandRowNumber[0] = position;
-			((CustomAdapter) lists.get(0).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.resetBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[0] = position;
 			lastUserSelectionList = 0;
 
@@ -205,8 +208,10 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView2:
 			bandRowNumber[1] = position;
-			((CustomAdapter) lists.get(1).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.resetBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[1] = position;
 			lastUserSelectionList = 1;
 
@@ -220,8 +225,10 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView3:
 			bandRowNumber[2] = position;
-			((CustomAdapter) lists.get(2).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.resetBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[2] = position - 2;
 			lastUserSelectionList = 2;
 
@@ -235,8 +242,10 @@ public class FourBandFrag extends Fragment implements
 			break;
 		case R.id.FourListView4:
 			bandRowNumber[3] = position;
-			((CustomAdapter) lists.get(3).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.resetBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[3] = position;
 			lastUserSelectionList = 3;
 

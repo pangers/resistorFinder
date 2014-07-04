@@ -229,8 +229,10 @@ public class FiveBandFrag extends Fragment implements
 		case R.id.FiveListView1:
 			// update selection array
 			bandRowNumber[0] = position;
-			((CustomAdapter) lists.get(0).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.setBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[0] = position;
 			lastUserSelectionList = 0;
 
@@ -247,8 +249,10 @@ public class FiveBandFrag extends Fragment implements
 			break;
 		case R.id.FiveListView2:
 			bandRowNumber[1] = position;
-			((CustomAdapter) lists.get(1).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.setBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[1] = position;
 			lastUserSelectionList = 1;
 
@@ -263,8 +267,10 @@ public class FiveBandFrag extends Fragment implements
 			break;
 		case R.id.FiveListView3:
 			bandRowNumber[2] = position;
-			((CustomAdapter) lists.get(2).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.setBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[2] = position;
 			lastUserSelectionList = 2;
 
@@ -279,8 +285,10 @@ public class FiveBandFrag extends Fragment implements
 			break;
 		case R.id.FiveListView4:
 			bandRowNumber[3] = position;
-			((CustomAdapter) lists.get(3).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.setBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[3] = position - 2;
 			lastUserSelectionList = 3;
 
@@ -295,8 +303,10 @@ public class FiveBandFrag extends Fragment implements
 			break;
 		case R.id.FiveListView5:
 			bandRowNumber[4] = position;
-			((CustomAdapter) lists.get(4).getAdapter())
-					.setBandRowNumber(bandRowNumber);
+			for (int p = 0; p < lists.size(); p++) {
+				((CustomAdapter) lists.get(p).getAdapter())
+						.setBandRowNumber(bandRowNumber);
+			}
 			bandRowNumberTrue[4] = position;
 			lastUserSelectionList = 4;
 

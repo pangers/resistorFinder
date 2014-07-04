@@ -115,6 +115,8 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 					holder.radiobutton.setChecked(true);
 				}
 				break;
+			default:
+				holder.radiobutton.setChecked(false);
 			}
 
 			// Fill the rowView with data
@@ -140,6 +142,12 @@ public class CustomAdapter extends ArrayAdapter<Model> {
 	public void setBandRowNumber(int[] bandRowNumber) {
 		for (int i = 0; i < bandRowNumber.length; i++) {
 			this.bandRowNumber[i] = bandRowNumber[i];
+		}
+	}
+	
+	public void resetBandRowNumber(int[] bandRowNumber) {
+		for (int i = 0; i < bandRowNumber.length; i++) {
+			this.bandRowNumber[i] = unselected;
 		}
 	}
 
