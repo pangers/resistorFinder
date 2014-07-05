@@ -12,14 +12,15 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 public class ByValueActivity extends FragmentActivity implements
-		ActionBar.OnNavigationListener {
+		ActionBar.OnNavigationListener,
+		valueEntryFrag.onResistanceEnteredListener {
 
 	private ActionBar actionBar = null;
 	private ArrayList<String> dropDownMenu = new ArrayList<String>();
 	private ArrayAdapter<String> dropDownAdapter = null;
 
 	final static String TAG = "valueEntryFrag";
-
+	final static String RESULTTAG = "resultTag";
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +37,21 @@ public class ByValueActivity extends FragmentActivity implements
 				android.R.layout.simple_spinner_dropdown_item, dropDownMenu);
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
 		actionBar.setSelectedNavigationItem(1);
-		
+
 		if (findViewById(R.id.valueentryframe) != null) {
 			if (savedInstanceState != null) {
 				Log.d(TAG, "second time created");
 				return;
 			}
 			Log.d(TAG, "first time created");
-			getSupportFragmentManager().beginTransaction()
+			getSupportFragmentManager()
+					.beginTransaction()
 					.add(R.id.valueentryframe, new valueEntryFrag())
-					.add(R.id.valueresultframe, new valueResultFrag()).commit();
-		}		
+					.add(R.id.valueresultframe, new valueResultFrag(),
+							RESULTTAG).commit();
+		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.actions, menu);
@@ -76,7 +79,9 @@ public class ByValueActivity extends FragmentActivity implements
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
 		Log.d(TAG, "I make it here");
-		Log.d(TAG, "DROP_DOWN_SELECTION value: " +state.getInt(DROP_DOWN_SELECTION));
+		Log.d(TAG,
+				"DROP_DOWN_SELECTION value: "
+						+ state.getInt(DROP_DOWN_SELECTION));
 		actionBar.setSelectedNavigationItem(state.getInt(DROP_DOWN_SELECTION));
 
 	}
@@ -97,5 +102,14 @@ public class ByValueActivity extends FragmentActivity implements
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putInt(DROP_DOWN_SELECTION, 1);
+	}
+
+	@Override
+	public void onResistanceEntered(ArrayList<resistorData> resistors) {
+		valueResultFrag fragment = (valueResultFrag) getSupportFragmentManager()
+				.findFragmentByTag(RESULTTAG);
+		if (fragment != null) {
+			fragment.updateData(resistors);
+		}
 	}
 }

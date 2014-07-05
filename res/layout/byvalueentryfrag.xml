@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -16,11 +17,15 @@
             android:text="@string/resistance" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/resistancetext"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal" />
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="numberDecimal"
+            android:width="400dp" />
     </LinearLayout>
-    <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -31,10 +36,17 @@
             android:layout_height="wrap_content"
             android:text="@string/tolerance" />
 
-        <Spinner android:id="@+id/toleranceselect"
+        <Spinner
+            android:id="@+id/toleranceselect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/calculate"
+            style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:text="@string/calculate" />
     </LinearLayout>
 
 </LinearLayout>

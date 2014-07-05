@@ -48,32 +48,7 @@ public class TextDisplayer {
 	}
 
 	public void resistanceDisplay(TextView textview, BigDecimal[] results) {
-		// if (results[0] >= 10000000) {
-		// textview.append("\n\nResistance: " + (results[0] / 1000000)
-		// + "M ohms");
-		// } else if (results[0] >= 1000000) {
-		// textview.append("\n\nResistance: " + (results[0] / 1000000)
-		// + "M ohms");
-		// } else if (results[0] >= 100000) {
-		// textview.append("\n\nResistance: " + (results[0] / 1000) + "K ohms");
-		// } else if (results[0] >= 10000) {
-		// textview.append("\n\nResistance: " + results[0] / 1000 + "K ohms");
-		// } else if (results[0] >= 1000) {
-		// textview.append("\n\nResistance: " + results[0] / 1000 + "K ohms");
-		// } else if (results[0] >= 100) {
-		// textview.append("\n\nResistance: " + results[0] + " ohms");
-		// } else if (results[0] >= 10) {
-		// textview.append("\n\nResistance: " + results[0] + " ohms");
-		// } else if (results[0] >= 1) {
-		// BigDecimal test = BigDecimal.valueOf(results[0]);
-		// textview.append("\n\nResistance: " + results[0] + " ohms");
-		// } else if (results[0] >= 0.1) {
-		// textview.append("\n\nResistance: " + results[0] + " ohms");
-		// } else if (results[0] >= 0.01) {
-		// textview.append("\n\nResistance: " + results[0] + " ohms");
-		// } else if (results[0] == 0) {
-		// textview.append("\n\nResistance: 0 ohms");
-		// }
+		
 		BigDecimal tenMill = new BigDecimal("10000000");
 		BigDecimal Mill = new BigDecimal("1000000");
 		BigDecimal hundThou = new BigDecimal("10000");

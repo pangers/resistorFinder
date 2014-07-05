@@ -4,9 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <TextView
+    <ListView
+        android:id="@+id/resultsbyvaluelist"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="result frag" />
+        android:background="#F3F3F3" />
 
 </LinearLayout>

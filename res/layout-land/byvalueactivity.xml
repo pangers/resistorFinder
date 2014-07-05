@@ -8,12 +8,12 @@
         android:id="@+id/valueentryframe"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="30" />
+        android:layout_weight="40" />
 
     <FrameLayout
         android:id="@+id/valueresultframe"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="70" />
+        android:layout_weight="60" />
 
 </LinearLayout>

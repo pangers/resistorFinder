@@ -16,5 +16,16 @@
 	<string name="tab">\u0009</string>
 	<string name ="resistance">Resistance</string>
 	<string name="tolerance">Tolerance</string>
+	
+	<string-array name="tolerancechoices">
+	    <item>\u00B110%</item>
+	    <item>\u00B15%</item>
+	    <item>\u00B11%</item>
+	    <item>\u00B12%</item>
+	    <item>\u00B10.5%</item>
+	    <item>\u00B10.25%</item>
+	    <item>\u00B10.1%</item>
+	</string-array>
+	<string name="calculate">Calculate</string>
 
 </resources>
