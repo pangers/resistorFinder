@@ -66,9 +66,7 @@ public class FiveBandFrag extends Fragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		setHasOptionsMenu(true);
-		
-		
+
 		textDisplayer = new TextDisplayer(getActivity());
 
 		resultView = (TextView) getActivity().findViewById(R.id.FiveResultView);
@@ -98,13 +96,6 @@ public class FiveBandFrag extends Fragment implements
 					.setBandRowNumber(bandRowNumber);
 		}
 
-		// // Retain results textview after configuration change
-		// if (bandRowNumberTrue[0] != unselected || bandRowNumberTrue[1] !=
-		// unselected
-		// || bandRowNumberTrue[2] != unselected
-		// || bandRowNumberTrue[3] != unselected
-		// || bandRowNumberTrue[4] != unselected) {
-
 		if (bandRowNumberTrue[0] != unselected
 				&& bandRowNumberTrue[1] != unselected
 				&& bandRowNumberTrue[2] != unselected
@@ -114,32 +105,7 @@ public class FiveBandFrag extends Fragment implements
 			results = new ResistorCalculator().calculate(bandRowNumberTrue);
 			textDisplayer.resistanceDisplay(resultView, results);
 		}
-		// }
-	}
 
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.actions, menu);
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-
-			return true;
-
-		case R.id.colourcode:
-
-			return true;
-		case R.id.help:
-
-			return true;
-		case R.id.header:
-
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}
 	}
 
 	// parameter = 1 for digit bands, parameter = 2 for multiplier bands,
@@ -161,57 +127,42 @@ public class FiveBandFrag extends Fragment implements
 			models.add(new Model(R.drawable.rectanglewhite, Html.fromHtml("9")));
 			break;
 		case 2:
-			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("10<sup><small>-2</small></sup>")));
-			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("10<sup><small>-1</small></sup>")));
-			models.add(new Model(R.drawable.rectangleblack, Html.fromHtml("10<sup><small>0<small></sup>")));
-			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("10<sup><small>1</small></sup>")));
-			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("10<sup><small>2</small></sup>")));
-			models.add(new Model(R.drawable.rectangleorange, Html.fromHtml("10<sup><small>3</small></sup>")));
-			models.add(new Model(R.drawable.rectangleyellow, Html.fromHtml("10<sup><small>4</small></sup>")));
-			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("10<sup><small>5</small></sup>")));
-			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("10<sup><small>6</small></sup>")));
-			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("10<sup><small>7</small></sup>")));
+			models.add(new Model(R.drawable.rectanglesilver, Html
+					.fromHtml("10<sup><small>-2</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegold, Html
+					.fromHtml("10<sup><small>-1</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblack, Html
+					.fromHtml("10<sup><small>0<small></sup>")));
+			models.add(new Model(R.drawable.rectanglebrown, Html
+					.fromHtml("10<sup><small>1</small></sup>")));
+			models.add(new Model(R.drawable.rectanglered, Html
+					.fromHtml("10<sup><small>2</small></sup>")));
+			models.add(new Model(R.drawable.rectangleorange, Html
+					.fromHtml("10<sup><small>3</small></sup>")));
+			models.add(new Model(R.drawable.rectangleyellow, Html
+					.fromHtml("10<sup><small>4</small></sup>")));
+			models.add(new Model(R.drawable.rectanglegreen, Html
+					.fromHtml("10<sup><small>5</small></sup>")));
+			models.add(new Model(R.drawable.rectangleblue, Html
+					.fromHtml("10<sup><small>6</small></sup>")));
+			models.add(new Model(R.drawable.rectangleviolet, Html
+					.fromHtml("10<sup><small>7</small></sup>")));
 			break;
 		case 3:
-			models.add(new Model(R.drawable.rectanglesilver, Html.fromHtml("\u00B110%")));
-			models.add(new Model(R.drawable.rectanglegold, Html.fromHtml("\u00B15%")));
-			models.add(new Model(R.drawable.rectanglebrown, Html.fromHtml("\u00B11%")));
-			models.add(new Model(R.drawable.rectanglered, Html.fromHtml("\u00B12%")));
-			models.add(new Model(R.drawable.rectanglegreen, Html.fromHtml("\u00B10.5%")));
-			models.add(new Model(R.drawable.rectangleblue, Html.fromHtml("\u00B10.25%")));
-			models.add(new Model(R.drawable.rectangleviolet, Html.fromHtml("\u00B10.1%")));
-//		case 1:
-//			models.add(new Model(R.drawable.rectangleblack, ""));
-//			models.add(new Model(R.drawable.rectanglebrown, ""));
-//			models.add(new Model(R.drawable.rectanglered, ""));
-//			models.add(new Model(R.drawable.rectangleorange, ""));
-//			models.add(new Model(R.drawable.rectangleyellow, ""));
-//			models.add(new Model(R.drawable.rectanglegreen, ""));
-//			models.add(new Model(R.drawable.rectangleblue, ""));
-//			models.add(new Model(R.drawable.rectangleviolet, ""));
-//			models.add(new Model(R.drawable.rectanglegrey, ""));
-//			models.add(new Model(R.drawable.rectanglewhite, ""));
-//			break;
-//		case 2:
-//			models.add(new Model(R.drawable.rectanglesilver, ""));
-//			models.add(new Model(R.drawable.rectanglegold, ""));
-//			models.add(new Model(R.drawable.rectangleblack, ""));
-//			models.add(new Model(R.drawable.rectanglebrown, ""));
-//			models.add(new Model(R.drawable.rectanglered, ""));
-//			models.add(new Model(R.drawable.rectangleorange, ""));
-//			models.add(new Model(R.drawable.rectangleyellow, ""));
-//			models.add(new Model(R.drawable.rectanglegreen, ""));
-//			models.add(new Model(R.drawable.rectangleblue, ""));
-//			models.add(new Model(R.drawable.rectangleviolet, ""));
-//			break;
-//		case 3:
-//			models.add(new Model(R.drawable.rectanglesilver, ""));
-//			models.add(new Model(R.drawable.rectanglegold, ""));
-//			models.add(new Model(R.drawable.rectanglebrown, ""));
-//			models.add(new Model(R.drawable.rectanglered, ""));
-//			models.add(new Model(R.drawable.rectanglegreen, ""));
-//			models.add(new Model(R.drawable.rectangleblue, ""));
-//			models.add(new Model(R.drawable.rectangleviolet, ""));
+			models.add(new Model(R.drawable.rectanglesilver, Html
+					.fromHtml("\u00B110%")));
+			models.add(new Model(R.drawable.rectanglegold, Html
+					.fromHtml("\u00B15%")));
+			models.add(new Model(R.drawable.rectanglebrown, Html
+					.fromHtml("\u00B11%")));
+			models.add(new Model(R.drawable.rectanglered, Html
+					.fromHtml("\u00B12%")));
+			models.add(new Model(R.drawable.rectanglegreen, Html
+					.fromHtml("\u00B10.5%")));
+			models.add(new Model(R.drawable.rectangleblue, Html
+					.fromHtml("\u00B10.25%")));
+			models.add(new Model(R.drawable.rectangleviolet, Html
+					.fromHtml("\u00B10.1%")));
 		}
 		return models;
 	}

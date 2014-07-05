@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
 public class ByValueActivity extends FragmentActivity implements
@@ -44,18 +46,30 @@ public class ByValueActivity extends FragmentActivity implements
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.valueentryframe, new valueEntryFrag())
 					.add(R.id.valueresultframe, new valueResultFrag()).commit();
+		}		
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.actions, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.colourcode:
+
+			return true;
+		case R.id.help:
+
+			return true;
+		case R.id.header:
+
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-
-		// if
-		// (getSupportFragmentManager().findFragmentById(R.id.valueentryframe)
-		// == null) {
-		//
-		// getSupportFragmentManager().beginTransaction()
-		// .add(R.id.valueentryframe, new valueEntryFrag())
-		// .add(R.id.valueresultframe, new valueResultFrag()).commit();
-		// }
-
-		
 	}
 
 	@Override

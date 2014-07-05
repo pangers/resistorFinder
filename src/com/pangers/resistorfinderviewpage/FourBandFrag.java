@@ -63,8 +63,7 @@ public class FourBandFrag extends Fragment implements
 
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		setHasOptionsMenu(true);
-
+		
 		textDisplayer = new TextDisplayer(getActivity());
 
 		resultView = (TextView) getActivity().findViewById(R.id.FourResultView);
@@ -92,11 +91,7 @@ public class FourBandFrag extends Fragment implements
 			((CustomAdapter) lists.get(p).getAdapter())
 					.setBandRowNumber(bandRowNumber);
 		}
-		// // Retain results textview after configuration change
-		// if (bandRowNumberTrue[0] != unselected || bandRowNumberTrue[1] !=
-		// unselected
-		// || bandRowNumberTrue[2] != unselected
-		// || bandRowNumberTrue[3] != unselected) {
+		
 
 		if (bandRowNumberTrue[0] != unselected
 				&& bandRowNumberTrue[1] != unselected
@@ -105,34 +100,6 @@ public class FourBandFrag extends Fragment implements
 			// calculate resistance and tolerance and show result
 			results = new ResistorCalculator().calculate(bandRowNumberTrue);
 			textDisplayer.resistanceDisplay(resultView, results);
-		}
-
-		// }
-
-	}
-
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		inflater.inflate(R.menu.actions, menu);
-		super.onCreateOptionsMenu(menu, inflater);
-	}
-
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case android.R.id.home:
-
-			return true;
-
-		case R.id.colourcode:
-
-			return true;
-		case R.id.help:
-
-			return true;
-		case R.id.header:
-
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
 		}
 	}
 
