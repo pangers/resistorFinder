@@ -19,7 +19,7 @@ public class ByValueActivity extends FragmentActivity implements
 	private ArrayList<String> dropDownMenu = new ArrayList<String>();
 	private ArrayAdapter<String> dropDownAdapter = null;
 
-	final static String TAG = "valueEntryFrag";
+	final static String TAG = "ByValueActivity";
 	final static String RESULTTAG = "resultTag";
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
 
@@ -40,10 +40,8 @@ public class ByValueActivity extends FragmentActivity implements
 
 		if (findViewById(R.id.valueentryframe) != null) {
 			if (savedInstanceState != null) {
-				Log.d(TAG, "second time created");
 				return;
 			}
-			Log.d(TAG, "first time created");
 			getSupportFragmentManager()
 					.beginTransaction()
 					.add(R.id.valueentryframe, new valueEntryFrag())
@@ -78,10 +76,7 @@ public class ByValueActivity extends FragmentActivity implements
 	@Override
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
-		Log.d(TAG, "I make it here");
-		Log.d(TAG,
-				"DROP_DOWN_SELECTION value: "
-						+ state.getInt(DROP_DOWN_SELECTION));
+
 		actionBar.setSelectedNavigationItem(state.getInt(DROP_DOWN_SELECTION));
 
 	}
@@ -109,7 +104,14 @@ public class ByValueActivity extends FragmentActivity implements
 		valueResultFrag fragment = (valueResultFrag) getSupportFragmentManager()
 				.findFragmentByTag(RESULTTAG);
 		if (fragment != null) {
+
 			fragment.updateData(resistors);
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		actionBar.setSelectedNavigationItem(0);
+		super.onBackPressed();
 	}
 }

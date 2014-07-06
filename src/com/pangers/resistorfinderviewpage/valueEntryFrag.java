@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -102,10 +103,11 @@ public class valueEntryFrag extends Fragment implements AdapterView.OnItemSelect
 		ArrayList<resistorData> resistors = null;
 		if(TextUtils.isEmpty(resistanceText.getText().toString().trim()) != true) {
 			double data = Double.parseDouble(resistanceText.getText().toString());
+			//Log.d(TAG, "entered data: " + data);
 			BigDecimal BDdata = BigDecimal.valueOf(data);
 			resistors = (new ResistorCalculator()).findBandColours(BDdata, toleranceSelection);
+			listener.onResistanceEntered(resistors);
 		}
-		listener.onResistanceEntered(resistors);
 	}
 	
 }

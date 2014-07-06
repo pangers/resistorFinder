@@ -3,8 +3,11 @@ package com.pangers.resistorfinderviewpage;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
+import android.util.Log;
+
 public class ResistorCalculator {
 
+	final static String TAG = "ResistorCalculator";
 	final private double[] tolerance = { 10, 5, 1, 2, 0.5, 0.25, 0.1 };
 
 	public BigDecimal[] calculate(int[] bandRowNumber) {
@@ -66,7 +69,7 @@ public class ResistorCalculator {
 
 	public ArrayList<resistorData> findBandColours(BigDecimal data,
 			int toleranceSelection) {
-		ArrayList<resistorData> resistors = null;
+		ArrayList<resistorData> resistors = new ArrayList<resistorData>();
 		resistors = find4BandColours(data, resistors, toleranceSelection);
 		resistors = find5BandColours(data, resistors, toleranceSelection);
 		return resistors;
@@ -86,9 +89,6 @@ public class ResistorCalculator {
 		BigDecimal tenth = one.divide(ten);
 		BigDecimal hundredth = tenth.divide(ten);
 		
-	
-		
-
 		if (data.compareTo(hundMill) >= 0) {
 			resistors = fourBandCalculator(resistors, data, tenMill, toleranceSelection);
 			return resistors;
@@ -143,8 +143,10 @@ public class ResistorCalculator {
 		data = (data.divide(multiplier)).setScale(0, BigDecimal.ROUND_HALF_UP);
 		dig1 = (data.divide(ten)).setScale(0, BigDecimal.ROUND_DOWN);
 		dig2 = data.subtract(dig1.multiply(ten));
+	
 		resistors.add(new resistorData(dig1.intValue(), dig2.intValue(),
 				multiplier.intValue(), toleranceSelection));
+		
 		if ((temp.compareTo(ninetyNineFiveMill) < 0) && (temp.compareTo(pointZeroNineFive) >= 0)) {
 			if (dig2.compareTo(zero) == 0) {
 				resistors

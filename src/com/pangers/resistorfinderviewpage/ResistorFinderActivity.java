@@ -100,5 +100,12 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		super.onSaveInstanceState(outState);
 		outState.putInt(DROP_DOWN_SELECTION, 0);
 	}
+	
+	@Override
+	public void onBackPressed() {
+		actionBar.setSelectedNavigationItem(1);
+		super.onBackPressed();
+	}
+	
 
 }

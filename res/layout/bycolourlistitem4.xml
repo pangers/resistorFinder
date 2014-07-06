@@ -38,9 +38,6 @@
             android:layout_height="32dp"
             android:layout_weight="1" >
         </ImageView>
-
-        <ImageView>
-        </ImageView>
     </LinearLayout>
 
     <TextView
@@ -49,6 +46,6 @@
         android:layout_height="match_parent"
         android:layout_margin="8dp"
         android:gravity="center"
-        android:textSize="18sp" />
+        android:textSize="16sp" />
 
 </LinearLayout>

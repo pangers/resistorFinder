@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ByValueActivity" >
+        <activity
+            android:name="ByValueActivity"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
     </application>
 
