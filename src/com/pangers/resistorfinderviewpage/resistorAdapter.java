@@ -14,6 +14,7 @@ public class resistorAdapter extends ArrayAdapter<resistorData> {
 
 	Context context;
 	ArrayList<resistorData> resistors = new ArrayList<resistorData>();
+	int counter = 1;
 
 	private final int unselected = -17;
 	final static String TAG = "resistorAdapter";
@@ -31,19 +32,29 @@ public class resistorAdapter extends ArrayAdapter<resistorData> {
 		LayoutInflater inflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+		// convertView = null;
 		// Get rowView from inflater
 		View rowView = null;
-
+		Log.d(TAG, "getView called this many times: " + counter);
+		counter = counter + 1;
+		Log.d(TAG, "resistors.size(): " + resistors.size());
+		Log.d(TAG, "Inflating position: " + position);
 		// inflating 4 band resistors
 		if (resistors.get(position).dig3 == unselected) {
+			// if (getItemViewType(position) == 0) {
+//			Log.d(TAG, "which is a 4 band");
 			TextDisplayer textDisplayer = new TextDisplayer(context);
 			fourResistorViewHolder holder;
-			if (convertView == null) {
+			//check the convertview is null but also if the convertview given by the system is of the right type
+			if (convertView == null
+					|| !(convertView.getTag() instanceof fourResistorViewHolder)) {
+//				Log.d(TAG, "fails in convertview==null");
 				rowView = inflater.inflate(R.layout.bycolourlistitem4, parent,
 						false);
 				holder = new fourResistorViewHolder(rowView);
 				rowView.setTag(holder);
 			} else {
+//				Log.d(TAG, "fails in else condition");
 				rowView = convertView;
 				holder = (fourResistorViewHolder) convertView.getTag();
 			}
@@ -66,14 +77,20 @@ public class resistorAdapter extends ArrayAdapter<resistorData> {
 		} else {
 			TextDisplayer textDisplayer = new TextDisplayer(context);
 			fiveResistorViewHolder holder;
-			if (convertView == null) {
+//			Log.d(TAG, "which is a 5 band");
+			if (convertView == null
+					|| !(convertView.getTag() instanceof fiveResistorViewHolder)) {
+//				Log.d(TAG, "fails in convertview==null");
 				rowView = inflater.inflate(R.layout.bycolourlistitem5, parent,
 						false);
 				holder = new fiveResistorViewHolder(rowView);
 				rowView.setTag(holder);
 			} else {
+//				Log.d(TAG, "fails in else condition");
 				rowView = convertView;
+//				Log.d(TAG, "still alive");
 				holder = (fiveResistorViewHolder) convertView.getTag();
+//				Log.d(TAG, "survived cast to fiveResisHolder");
 			}
 			holder.fiveimageview1.setImageResource(getDigRectangle(resistors
 					.get(position).getDig1()));

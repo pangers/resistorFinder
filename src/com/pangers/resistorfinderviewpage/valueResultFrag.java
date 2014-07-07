@@ -45,7 +45,7 @@ public class valueResultFrag extends Fragment {
 	public void updateData(ArrayList<resistorData> bufferList) {
 //		ArrayList<resistorData> newData = new ArrayList<resistorData>();
 //		newData = bufferList;
-		resistors = new ArrayList<resistorData>();
+		//resistors = new ArrayList<resistorData>();
 		resistors = bufferList;
 		adapter = new resistorAdapter(getActivity(), resistors);
 		resultListView.setAdapter(adapter);
