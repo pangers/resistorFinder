@@ -76,7 +76,6 @@ public class ByValueActivity extends FragmentActivity implements
 	@Override
 	protected void onRestoreInstanceState(Bundle state) {
 		super.onRestoreInstanceState(state);
-
 		actionBar.setSelectedNavigationItem(state.getInt(DROP_DOWN_SELECTION));
 
 	}
@@ -112,6 +111,5 @@ public class ByValueActivity extends FragmentActivity implements
 	@Override
 	public void onBackPressed() {
 		actionBar.setSelectedNavigationItem(0);
-		super.onBackPressed();
 	}
 }

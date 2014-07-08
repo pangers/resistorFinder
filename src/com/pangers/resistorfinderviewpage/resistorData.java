@@ -18,7 +18,7 @@ public class resistorData implements Parcelable {
 	public resistorData(int dig1, int dig2, int multiplier, int tolerance) {
 		this.dig1 = dig1;
 		this.dig2 = dig2;
-		this.multiplier = (int) Math.log10(multiplier);
+		this.multiplier = multiplier;
 		this.tolerance = tolerance;
 
 	}

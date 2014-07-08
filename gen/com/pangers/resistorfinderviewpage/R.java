@@ -10,6 +10,7 @@ package com.pangers.resistorfinderviewpage;
 public final class R {
     public static final class array {
         public static final int tolerancechoices=0x7f060000;
+        public static final int unitchoices=0x7f060001;
     }
     public static final class attr {
     }
@@ -46,21 +47,21 @@ public final class R {
         public static final int rectangleyellow=0x7f02000f;
     }
     public static final class id {
-        public static final int FiveListView1=0x7f090011;
-        public static final int FiveListView2=0x7f090012;
-        public static final int FiveListView3=0x7f090013;
-        public static final int FiveListView4=0x7f090014;
-        public static final int FiveListView5=0x7f090015;
-        public static final int FiveResultView=0x7f090016;
-        public static final int FourListView1=0x7f090017;
-        public static final int FourListView2=0x7f090018;
-        public static final int FourListView3=0x7f090019;
-        public static final int FourListView4=0x7f09001a;
-        public static final int FourResultView=0x7f09001b;
-        public static final int about=0x7f090022;
-        public static final int bandcolour=0x7f09001d;
-        public static final int calculate=0x7f09000f;
-        public static final int colourcode=0x7f090020;
+        public static final int FiveListView1=0x7f090012;
+        public static final int FiveListView2=0x7f090013;
+        public static final int FiveListView3=0x7f090014;
+        public static final int FiveListView4=0x7f090015;
+        public static final int FiveListView5=0x7f090016;
+        public static final int FiveResultView=0x7f090017;
+        public static final int FourListView1=0x7f090018;
+        public static final int FourListView2=0x7f090019;
+        public static final int FourListView3=0x7f09001a;
+        public static final int FourListView4=0x7f09001b;
+        public static final int FourResultView=0x7f09001c;
+        public static final int about=0x7f090023;
+        public static final int bandcolour=0x7f09001e;
+        public static final int calculate=0x7f090010;
+        public static final int colourcode=0x7f090021;
         public static final int fiveresultcolour1=0x7f090005;
         public static final int fiveresultcolour2=0x7f090006;
         public static final int fiveresultcolour3=0x7f090007;
@@ -72,13 +73,14 @@ public final class R {
         public static final int fourresultcolour3=0x7f090002;
         public static final int fourresultcolour4=0x7f090003;
         public static final int fourresvalue=0x7f090004;
-        public static final int header=0x7f09001c;
-        public static final int help=0x7f090021;
-        public static final int pager=0x7f09001f;
-        public static final int radioButton=0x7f09001e;
+        public static final int header=0x7f09001d;
+        public static final int help=0x7f090022;
+        public static final int pager=0x7f090020;
+        public static final int radioButton=0x7f09001f;
         public static final int resistancetext=0x7f09000d;
-        public static final int resultsbyvaluelist=0x7f090010;
-        public static final int toleranceselect=0x7f09000e;
+        public static final int resultsbyvaluelist=0x7f090011;
+        public static final int toleranceselect=0x7f09000f;
+        public static final int unitselect=0x7f09000e;
         public static final int valueentryframe=0x7f09000b;
         public static final int valueresultframe=0x7f09000c;
     }

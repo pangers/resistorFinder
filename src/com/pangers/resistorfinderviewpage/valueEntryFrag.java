@@ -18,34 +18,43 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class valueEntryFrag extends Fragment implements AdapterView.OnItemSelectedListener, OnClickListener {
+public class valueEntryFrag extends Fragment implements
+		AdapterView.OnItemSelectedListener, OnClickListener {
 
 	final static String TAG = "valueEntryFrag";
 	final static String RESISTANCE = "resistance";
+	final static String TOLERANCE_SELECTION = "toleranceSelection";
+	final static String UNIT_SELECTION = "unitSelection";
 
 	private Spinner toleranceSpinner = null;
+	private Spinner unitSpinner = null;
 	private ArrayAdapter<CharSequence> toleranceAdapter = null;
-	
+	private ArrayAdapter<CharSequence> unitAdapter = null;
+
 	private int toleranceSelection;
+	private double unitSelection;
+	private double[] units = { 1, 1000, 1000000 };
 	private EditText resistanceText;
 	private Button calculateButton;
+	final private double maxLimit = 9990000000.0;
 
 	onResistanceEnteredListener listener;
-	
+
 	public interface onResistanceEnteredListener {
 		public void onResistanceEntered(ArrayList<resistorData> resistors);
 	}
-	
+
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {
 			listener = (onResistanceEnteredListener) activity;
 		} catch (ClassCastException e) {
-			throw new ClassCastException(activity.toString() + " must implement onResistanceEnteredListener");
+			throw new ClassCastException(activity.toString()
+					+ " must implement onResistanceEnteredListener");
 		}
 	}
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -64,50 +73,62 @@ public class valueEntryFrag extends Fragment implements AdapterView.OnItemSelect
 
 		toleranceSpinner = (Spinner) getActivity().findViewById(
 				R.id.toleranceselect);
-		//individual item(row) views
+		// individual item(row) views
 		toleranceAdapter = ArrayAdapter.createFromResource(getActivity(),
 				R.array.tolerancechoices, android.R.layout.simple_spinner_item);
-		//view containing all the items(rows)
-		toleranceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// view containing all the items(rows)
+		toleranceAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		toleranceSpinner.setAdapter(toleranceAdapter);
 		toleranceSpinner.setOnItemSelectedListener(this);
-		
-		resistanceText = (EditText) getActivity().findViewById(R.id.resistancetext);
+
+		unitSpinner = (Spinner) getActivity().findViewById(R.id.unitselect);
+		unitAdapter = ArrayAdapter.createFromResource(getActivity(),
+				R.array.unitchoices, android.R.layout.simple_spinner_item);
+		unitAdapter
+				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		unitSpinner.setAdapter(unitAdapter);
+		unitSpinner.setOnItemSelectedListener(this);
+
+		resistanceText = (EditText) getActivity().findViewById(
+				R.id.resistancetext);
 		calculateButton = (Button) getActivity().findViewById(R.id.calculate);
 		calculateButton.setOnClickListener(this);
-		
-		if (savedInstanceState != null) {
-			resistanceText.setText(savedInstanceState.getString(RESISTANCE));
-		}
-
 	}
-	
+
 	@Override
-	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-		toleranceSelection = pos;
+	public void onItemSelected(AdapterView<?> parent, View view, int pos,
+			long id) {
+		switch (parent.getId()) {
+		case R.id.toleranceselect:
+			toleranceSelection = pos;
+			break;
+		case R.id.unitselect:
+			unitSelection = units[pos];
+			break;
+		}
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
-		
+
 	}
-	
-	@Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(RESISTANCE, resistanceText.getText().toString());
-    }
 
 	@Override
 	public void onClick(View v) {
 		ArrayList<resistorData> resistors = null;
-		if(TextUtils.isEmpty(resistanceText.getText().toString().trim()) != true) {
-			double data = Double.parseDouble(resistanceText.getText().toString());
-			//Log.d(TAG, "entered data: " + data);
-			BigDecimal BDdata = BigDecimal.valueOf(data);
-			resistors = (new ResistorCalculator()).findBandColours(BDdata, toleranceSelection);
-			listener.onResistanceEntered(resistors);
+		if (TextUtils.isEmpty(resistanceText.getText().toString().trim()) != true) {
+			if ((Double.parseDouble(resistanceText.getText().toString()))
+					* unitSelection <= maxLimit) {
+				double data = (Double.parseDouble(resistanceText.getText()
+						.toString())) * unitSelection;
+
+				BigDecimal BDdata = BigDecimal.valueOf(data);
+				resistors = (new ResistorCalculator()).findBandColours(BDdata,
+						toleranceSelection);
+				listener.onResistanceEntered(resistors);
+			}
 		}
 	}
-	
+
 }

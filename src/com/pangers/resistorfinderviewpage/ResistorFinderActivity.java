@@ -1,5 +1,6 @@
 package com.pangers.resistorfinderviewpage;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 
@@ -22,10 +23,12 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	private ArrayAdapter<String> dropDownAdapter = null;
 
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
+	final static String TAG = "ResistorFinderActivity";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mainactivity);
+		
 
 		actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -88,7 +91,7 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		case 0:
 			return true;
 		case 1:
-			startActivity(new Intent(this, ByValueActivity.class));
+			startActivity(new Intent(this, ByValueActivity.class));	
 			return true;
 		}
 
@@ -104,7 +107,6 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	@Override
 	public void onBackPressed() {
 		actionBar.setSelectedNavigationItem(1);
-		super.onBackPressed();
 	}
 	
 

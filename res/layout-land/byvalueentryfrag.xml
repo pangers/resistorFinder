@@ -4,6 +4,11 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical" >
+    
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resistance" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,18 +16,19 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/resistance" />
 
         <EditText
             android:id="@+id/resistancetext"
-            android:layout_width="120dp"
+            android:layout_width="128dp"
             android:layout_height="wrap_content"
             android:imeOptions="flagNoExtractUi"
             android:inputType="numberDecimal"
             android:width="400dp" />
+        
+        <Spinner
+            android:id="@+id/unitselect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
