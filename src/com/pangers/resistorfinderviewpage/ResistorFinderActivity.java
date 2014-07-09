@@ -41,16 +41,16 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
 		dropdownSelection = getIntent().getIntExtra("DROPDOWN_POS_FROM_VALUE",
 				-1);
-//		if (dropdownSelection != -1) {
-//			actionBar.setSelectedNavigationItem(dropdownSelection);
-//		} else {
-//			actionBar.setSelectedNavigationItem(0);
-//		}
+		// if (dropdownSelection != -1) {
+		// actionBar.setSelectedNavigationItem(dropdownSelection);
+		// } else {
+		// actionBar.setSelectedNavigationItem(0);
+		// }
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(new MyPagerAdapter(this, getSupportFragmentManager(),
 				getFragments()));
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -67,10 +67,10 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.colourcode:
-
+			startActivity(new Intent(this, ColourCodeActivity.class));
 			return true;
 		case R.id.help:
-
+			showHelpDialog();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -99,8 +99,8 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		case 0:
 			return true;
 		case 1:
-//			Intent i = new Intent(this, ByValueActivity.class);
-//			i.putExtra("DROPDOWN_POS_FROM_MAIN", itemPosition);
+			// Intent i = new Intent(this, ByValueActivity.class);
+			// i.putExtra("DROPDOWN_POS_FROM_MAIN", itemPosition);
 			startActivity(new Intent(this, ByValueActivity.class));
 			return true;
 		}
@@ -113,11 +113,10 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		super.onSaveInstanceState(outState);
 		outState.putInt(DROP_DOWN_SELECTION, 0);
 	}
-	
 
-//	@Override
-//	public void onBackPressed() {
-//		
-//	}
+	public void showHelpDialog() {
+		ByColourDialog dialog = new ByColourDialog();
+		dialog.show(getSupportFragmentManager(), "ByColourDialog");
+	}
 
 }

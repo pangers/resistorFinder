@@ -26,6 +26,8 @@
             android:name="ByValueActivity"
             android:windowSoftInputMode="stateHidden" >
         </activity>
+        <activity android:name="ColourCodeActivity" >
+        </activity>
     </application>
 
 </manifest>

@@ -73,10 +73,10 @@ public class ByValueActivity extends FragmentActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.colourcode:
-
+			startActivity(new Intent(this, ColourCodeActivity.class));
 			return true;
 		case R.id.help:
-
+			showHelpDialog();
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
@@ -120,8 +120,8 @@ public class ByValueActivity extends FragmentActivity implements
 		}
 	}
 
-	// @Override
-	// public void onBackPressed() {
-	//
-	// }
+	public void showHelpDialog() {
+		ByValueDialog dialog = new ByValueDialog();
+		dialog.show(getSupportFragmentManager(), "ByValueDialog");
+	}
 }

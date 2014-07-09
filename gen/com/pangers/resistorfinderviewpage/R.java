@@ -47,20 +47,20 @@ public final class R {
         public static final int rectangleyellow=0x7f02000f;
     }
     public static final class id {
-        public static final int FiveListView1=0x7f090012;
-        public static final int FiveListView2=0x7f090013;
-        public static final int FiveListView3=0x7f090014;
-        public static final int FiveListView4=0x7f090015;
-        public static final int FiveListView5=0x7f090016;
-        public static final int FiveResultView=0x7f090017;
-        public static final int FourListView1=0x7f090018;
-        public static final int FourListView2=0x7f090019;
-        public static final int FourListView3=0x7f09001a;
-        public static final int FourListView4=0x7f09001b;
-        public static final int FourResultView=0x7f09001c;
-        public static final int bandcolour=0x7f09001e;
+        public static final int FiveListView1=0x7f09001c;
+        public static final int FiveListView2=0x7f09001d;
+        public static final int FiveListView3=0x7f09001e;
+        public static final int FiveListView4=0x7f09001f;
+        public static final int FiveListView5=0x7f090020;
+        public static final int FiveResultView=0x7f090021;
+        public static final int FourListView1=0x7f090022;
+        public static final int FourListView2=0x7f090023;
+        public static final int FourListView3=0x7f090024;
+        public static final int FourListView4=0x7f090025;
+        public static final int FourResultView=0x7f090026;
+        public static final int bandcolour=0x7f090028;
         public static final int calculate=0x7f090010;
-        public static final int colourcode=0x7f090021;
+        public static final int colourcode=0x7f09002b;
         public static final int fiveresultcolour1=0x7f090005;
         public static final int fiveresultcolour2=0x7f090006;
         public static final int fiveresultcolour3=0x7f090007;
@@ -72,10 +72,20 @@ public final class R {
         public static final int fourresultcolour3=0x7f090002;
         public static final int fourresultcolour4=0x7f090003;
         public static final int fourresvalue=0x7f090004;
-        public static final int header=0x7f09001d;
-        public static final int help=0x7f090022;
-        public static final int pager=0x7f090020;
-        public static final int radioButton=0x7f09001f;
+        public static final int header=0x7f090027;
+        public static final int help=0x7f09002c;
+        public static final int multiplierblack=0x7f090012;
+        public static final int multiplierblue=0x7f090018;
+        public static final int multiplierbrown=0x7f090013;
+        public static final int multipliergold=0x7f09001a;
+        public static final int multipliergreen=0x7f090017;
+        public static final int multiplierorange=0x7f090015;
+        public static final int multiplierred=0x7f090014;
+        public static final int multipliersilver=0x7f09001b;
+        public static final int multiplierviolet=0x7f090019;
+        public static final int multiplieryellow=0x7f090016;
+        public static final int pager=0x7f09002a;
+        public static final int radioButton=0x7f090029;
         public static final int resistancetext=0x7f09000d;
         public static final int resultsbyvaluelist=0x7f090011;
         public static final int toleranceselect=0x7f09000f;
@@ -89,32 +99,52 @@ public final class R {
         public static final int byvalueactivity=0x7f030002;
         public static final int byvalueentryfrag=0x7f030003;
         public static final int byvalueresultfrag=0x7f030004;
-        public static final int fivebandlayoutfrag=0x7f030005;
-        public static final int fourbandlayoutfrag=0x7f030006;
-        public static final int listheader=0x7f030007;
-        public static final int listitem=0x7f030008;
-        public static final int mainactivity=0x7f030009;
+        public static final int colourcodetable=0x7f030005;
+        public static final int fivebandlayoutfrag=0x7f030006;
+        public static final int fourbandlayoutfrag=0x7f030007;
+        public static final int listheader=0x7f030008;
+        public static final int listitem=0x7f030009;
+        public static final int mainactivity=0x7f03000a;
     }
     public static final class menu {
         public static final int actions=0x7f080000;
     }
     public static final class string {
         public static final int about=0x7f050008;
+        public static final int black=0x7f050013;
+        public static final int blue=0x7f050019;
+        public static final int brown=0x7f050014;
+        public static final int bycolourhelp=0x7f050011;
+        public static final int byvaluehelp=0x7f050012;
         public static final int calculate=0x7f05000f;
         public static final int changemode=0x7f05000b;
+        public static final int colour=0x7f05001f;
         public static final int colourcode=0x7f050007;
+        public static final int digit=0x7f050020;
         public static final int fifthband=0x7f050005;
         public static final int firstband=0x7f050001;
         public static final int fivebandresistor=0x7f050009;
         public static final int fourbandresistor=0x7f05000a;
         public static final int fourthband=0x7f050004;
+        public static final int gold=0x7f05001d;
+        public static final int green=0x7f050018;
+        public static final int grey=0x7f05001b;
         public static final int help=0x7f050006;
+        public static final int multiplier=0x7f050021;
+        public static final int ok=0x7f050010;
+        public static final int orange=0x7f050016;
+        public static final int red=0x7f050015;
         public static final int resistance=0x7f05000d;
         public static final int resistorfinder=0x7f050000;
         public static final int secondband=0x7f050002;
+        public static final int silver=0x7f05001e;
         public static final int tab=0x7f05000c;
         public static final int thirdband=0x7f050003;
         public static final int tolerance=0x7f05000e;
+        public static final int tolerancetable=0x7f050022;
+        public static final int violet=0x7f05001a;
+        public static final int white=0x7f05001c;
+        public static final int yellow=0x7f050017;
     }
     public static final class style {
         /** 
