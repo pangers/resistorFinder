@@ -21,6 +21,7 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	private ActionBar actionBar = null;
 	private ArrayList<String> dropDownMenu = new ArrayList<String>();
 	private ArrayAdapter<String> dropDownAdapter = null;
+	private int dropdownSelection;
 
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
 	final static String TAG = "ResistorFinderActivity";
@@ -28,7 +29,6 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.mainactivity);
-		
 
 		actionBar = getActionBar();
 		actionBar.setDisplayShowTitleEnabled(false);
@@ -39,11 +39,22 @@ public class ResistorFinderActivity extends FragmentActivity implements
 				.getThemedContext(),
 				android.R.layout.simple_spinner_dropdown_item, dropDownMenu);
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
-		actionBar.setSelectedNavigationItem(0);
-
+		dropdownSelection = getIntent().getIntExtra("DROPDOWN_POS_FROM_VALUE",
+				-1);
+//		if (dropdownSelection != -1) {
+//			actionBar.setSelectedNavigationItem(dropdownSelection);
+//		} else {
+//			actionBar.setSelectedNavigationItem(0);
+//		}
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(new myPagerAdapter(this, getSupportFragmentManager(),
 				getFragments()));
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		actionBar.setSelectedNavigationItem(0);
 	}
 
 	@Override
@@ -91,7 +102,9 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		case 0:
 			return true;
 		case 1:
-			startActivity(new Intent(this, ByValueActivity.class));	
+//			Intent i = new Intent(this, ByValueActivity.class);
+//			i.putExtra("DROPDOWN_POS_FROM_MAIN", itemPosition);
+			startActivity(new Intent(this, ByValueActivity.class));
 			return true;
 		}
 
@@ -104,10 +117,10 @@ public class ResistorFinderActivity extends FragmentActivity implements
 		outState.putInt(DROP_DOWN_SELECTION, 0);
 	}
 	
-	@Override
-	public void onBackPressed() {
-		actionBar.setSelectedNavigationItem(1);
-	}
-	
+
+//	@Override
+//	public void onBackPressed() {
+//		
+//	}
 
 }

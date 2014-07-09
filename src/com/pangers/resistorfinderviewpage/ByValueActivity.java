@@ -18,6 +18,7 @@ public class ByValueActivity extends FragmentActivity implements
 	private ActionBar actionBar = null;
 	private ArrayList<String> dropDownMenu = new ArrayList<String>();
 	private ArrayAdapter<String> dropDownAdapter = null;
+	private int dropdownSelection;
 
 	final static String TAG = "ByValueActivity";
 	final static String RESULTTAG = "resultTag";
@@ -36,7 +37,13 @@ public class ByValueActivity extends FragmentActivity implements
 				.getThemedContext(),
 				android.R.layout.simple_spinner_dropdown_item, dropDownMenu);
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
-		actionBar.setSelectedNavigationItem(1);
+		dropdownSelection = getIntent().getIntExtra("DROPDOWN_POS_FROM_MAIN",
+				-1);
+//		if (dropdownSelection != -1) {
+//			actionBar.setSelectedNavigationItem(dropdownSelection);
+//		} else {
+//			actionBar.setSelectedNavigationItem(1);
+//		}
 
 		if (findViewById(R.id.valueentryframe) != null) {
 			if (savedInstanceState != null) {
@@ -48,6 +55,12 @@ public class ByValueActivity extends FragmentActivity implements
 					.add(R.id.valueresultframe, new valueResultFrag(),
 							RESULTTAG).commit();
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		actionBar.setSelectedNavigationItem(1);
 	}
 
 	@Override
@@ -84,6 +97,8 @@ public class ByValueActivity extends FragmentActivity implements
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		switch (itemPosition) {
 		case 0:
+//			Intent i = new Intent(this, ResistorFinderActivity.class);
+//			i.putExtra("DROPDOWN_POS_FROM_VALUE", itemPosition);
 			startActivity(new Intent(this, ResistorFinderActivity.class));
 			return true;
 		case 1:
@@ -108,8 +123,8 @@ public class ByValueActivity extends FragmentActivity implements
 		}
 	}
 
-	@Override
-	public void onBackPressed() {
-		actionBar.setSelectedNavigationItem(0);
-	}
+//	@Override
+//	public void onBackPressed() {
+//		
+//	}
 }

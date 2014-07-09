@@ -274,7 +274,9 @@ public class ResistorCalculator {
 		BigDecimal hundredth = tenth.divide(ten);
 		BigDecimal thousandth = hundredth.divide(ten);
 
+		Log.d(TAG, "untouched data is: " + data);
 		BigDecimal dataSigFig = toSignificantFigures(data, 3);
+		Log.d(TAG, "data to 3 sig fig is: " + dataSigFig);
 		if (dataSigFig.compareTo(one) < 0) {
 			dataSigFig = dataSigFig.setScale(0, BigDecimal.ROUND_HALF_UP);
 		}
