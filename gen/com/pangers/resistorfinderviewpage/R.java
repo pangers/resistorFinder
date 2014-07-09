@@ -58,7 +58,6 @@ public final class R {
         public static final int FourListView3=0x7f09001a;
         public static final int FourListView4=0x7f09001b;
         public static final int FourResultView=0x7f09001c;
-        public static final int about=0x7f090023;
         public static final int bandcolour=0x7f09001e;
         public static final int calculate=0x7f090010;
         public static final int colourcode=0x7f090021;

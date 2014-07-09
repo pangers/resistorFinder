@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class valueEntryFrag extends Fragment implements
+public class ValueEntryFrag extends Fragment implements
 		AdapterView.OnItemSelectedListener, OnClickListener {
 
 	final static String TAG = "valueEntryFrag";
@@ -41,7 +41,7 @@ public class valueEntryFrag extends Fragment implements
 	onResistanceEnteredListener listener;
 
 	public interface onResistanceEnteredListener {
-		public void onResistanceEntered(ArrayList<resistorData> resistors);
+		public void onResistanceEntered(ArrayList<ResistorData> resistors);
 	}
 
 	@Override
@@ -116,7 +116,7 @@ public class valueEntryFrag extends Fragment implements
 
 	@Override
 	public void onClick(View v) {
-		ArrayList<resistorData> resistors = null;
+		ArrayList<ResistorData> resistors = null;
 		if (TextUtils.isEmpty(resistanceText.getText().toString().trim()) != true) {
 			if ((Double.parseDouble(resistanceText.getText().toString()))
 					* unitSelection <= maxLimit) {

@@ -48,7 +48,7 @@ public class TextDisplayer {
 	}
 
 	public void resistanceDisplay(TextView textview, BigDecimal[] results) {
-		
+
 		BigDecimal tenMill = new BigDecimal("10000000");
 		BigDecimal Mill = new BigDecimal("1000000");
 		BigDecimal hundThou = new BigDecimal("10000");
@@ -60,36 +60,39 @@ public class TextDisplayer {
 		BigDecimal pointOne = new BigDecimal("0.1");
 		BigDecimal pointZeroOne = new BigDecimal("0.01");
 		BigDecimal zero = new BigDecimal("0");
+
+		results[0] = results[0].stripTrailingZeros();
+		results[1] = results[1].stripTrailingZeros();
 		if (results[0].compareTo(tenMill) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ (results[0].divide(Mill)) + "M ohm");
+					+ (results[0].divide(Mill)).toPlainString() + "M ohm");
 		} else if (results[0].compareTo(Mill) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ (results[0].divide(Mill)) + "M ohm");
+					+ (results[0].divide(Mill)).toPlainString() + "M ohm");
 		} else if (results[0].compareTo(hundThou) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ (results[0].divide(Thou)) + "K ohm");
+					+ (results[0].divide(Thou)).toPlainString() + "K ohm");
 		} else if (results[0].compareTo(tenThou) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ (results[0].divide(Thou)) + "K ohm");
+					+ (results[0].divide(Thou)).toPlainString() + "K ohm");
 		} else if (results[0].compareTo(Thou) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ (results[0].divide(Thou)) + "K ohm");
+					+ (results[0].divide(Thou)).toPlainString() + "K ohm");
 		} else if (results[0].compareTo(Hund) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ results[0] + " ohm");
+					+ results[0].toPlainString() + " ohm");
 		} else if (results[0].compareTo(ten) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ results[0] + " ohm");
+					+ results[0].toPlainString() + " ohm");
 		} else if (results[0].compareTo(one) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ results[0] + " ohm");
+					+ results[0].toPlainString() + " ohm");
 		} else if (results[0].compareTo(pointOne) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ results[0] + " ohm");
+					+ results[0].toPlainString() + " ohm");
 		} else if (results[0].compareTo(pointZeroOne) >= 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
-					+ results[0] + " ohm");
+					+ results[0].toPlainString() + " ohm");
 		} else if (results[0].compareTo(zero) == 0) {
 			textview.setText("Resistance:" + context.getString(R.string.tab)
 					+ "0 ohm");
@@ -97,6 +100,6 @@ public class TextDisplayer {
 		textview.append(context.getString(R.string.tab)
 				+ context.getString(R.string.tab) + "Tolerance:"
 
-				+ context.getString(R.string.tab) + "\u00B1" + results[1] + "%");
+				+ context.getString(R.string.tab) + "\u00B1" + results[1].toPlainString() + "%");
 	}
 }

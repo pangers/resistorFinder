@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class valueResultFrag extends Fragment {
+public class ValueResultFrag extends Fragment {
 
 	final static String TAG = "valueResultFrag";
 	final static String RESISTOR_LIST = "resistorList";
 
 	private ListView resultListView = null;
-	private ArrayList<resistorData> resistors = new ArrayList<resistorData>();
-	private resistorAdapter adapter = null;
+	private ArrayList<ResistorData> resistors = new ArrayList<ResistorData>();
+	private ResistorAdapter adapter = null;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,14 +42,14 @@ public class valueResultFrag extends Fragment {
 		updateData(resistors);
 	}
 
-	public void updateData(ArrayList<resistorData> bufferList) {
+	public void updateData(ArrayList<ResistorData> bufferList) {
 //		ArrayList<resistorData> newData = new ArrayList<resistorData>();
 //		newData = bufferList;
 		//resistors = new ArrayList<resistorData>();
 		resistors = bufferList;
-		adapter = new resistorAdapter(getActivity(), resistors);
+		adapter = new ResistorAdapter(getActivity(), resistors);
 		resultListView.setAdapter(adapter);
-		((resistorAdapter) resultListView.getAdapter()).notifyDataSetChanged();
+		((ResistorAdapter) resultListView.getAdapter()).notifyDataSetChanged();
 	}
 	
 	@Override

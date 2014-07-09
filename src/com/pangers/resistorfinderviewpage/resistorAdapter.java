@@ -10,16 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-public class resistorAdapter extends ArrayAdapter<resistorData> {
+public class ResistorAdapter extends ArrayAdapter<ResistorData> {
 
 	Context context;
-	ArrayList<resistorData> resistors = new ArrayList<resistorData>();
+	ArrayList<ResistorData> resistors = new ArrayList<ResistorData>();
 	int counter = 1;
 
 	private final int unselected = -17;
 	final static String TAG = "resistorAdapter";
 
-	public resistorAdapter(Context context, ArrayList<resistorData> resistors) {
+	public ResistorAdapter(Context context, ArrayList<ResistorData> resistors) {
 		super(context, R.layout.bycolourlistitem4, resistors);
 
 		this.context = context;
@@ -42,20 +42,20 @@ public class resistorAdapter extends ArrayAdapter<resistorData> {
 		if (resistors.get(position).dig3 == unselected) {
 
 			TextDisplayer textDisplayer = new TextDisplayer(context);
-			fourResistorViewHolder holder;
+			FourResistorViewHolder holder;
 			// check the convertview is null but also if the convertview given
 			// by the system is of the right type
 			if (convertView == null
-					|| !(convertView.getTag() instanceof fourResistorViewHolder)) {
+					|| !(convertView.getTag() instanceof FourResistorViewHolder)) {
 
 				rowView = inflater.inflate(R.layout.bycolourlistitem4, parent,
 						false);
-				holder = new fourResistorViewHolder(rowView);
+				holder = new FourResistorViewHolder(rowView);
 				rowView.setTag(holder);
 			} else {
 
 				rowView = convertView;
-				holder = (fourResistorViewHolder) convertView.getTag();
+				holder = (FourResistorViewHolder) convertView.getTag();
 			}
 			holder.fourimageview1.setImageResource(getDigRectangle(resistors
 					.get(position).getDig1()));
@@ -75,17 +75,17 @@ public class resistorAdapter extends ArrayAdapter<resistorData> {
 			// inflating 5 band resistors
 		} else {
 			TextDisplayer textDisplayer = new TextDisplayer(context);
-			fiveResistorViewHolder holder;
+			FiveResistorViewHolder holder;
 
 			if (convertView == null
-					|| !(convertView.getTag() instanceof fiveResistorViewHolder)) {
+					|| !(convertView.getTag() instanceof FiveResistorViewHolder)) {
 				rowView = inflater.inflate(R.layout.bycolourlistitem5, parent,
 						false);
-				holder = new fiveResistorViewHolder(rowView);
+				holder = new FiveResistorViewHolder(rowView);
 				rowView.setTag(holder);
 			} else {
 				rowView = convertView;
-				holder = (fiveResistorViewHolder) convertView.getTag();
+				holder = (FiveResistorViewHolder) convertView.getTag();
 			}
 			holder.fiveimageview1.setImageResource(getDigRectangle(resistors
 					.get(position).getDig1()));

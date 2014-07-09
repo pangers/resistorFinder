@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class resistorData implements Parcelable {
+public class ResistorData implements Parcelable {
 
 	private int unselected = -17;
 	private int dig1 = unselected;
@@ -15,7 +15,7 @@ public class resistorData implements Parcelable {
 
 	final static String TAG = "resistorData";
 
-	public resistorData(int dig1, int dig2, int multiplier, int tolerance) {
+	public ResistorData(int dig1, int dig2, int multiplier, int tolerance) {
 		this.dig1 = dig1;
 		this.dig2 = dig2;
 		this.multiplier = multiplier;
@@ -23,7 +23,7 @@ public class resistorData implements Parcelable {
 
 	}
 
-	public resistorData(int dig1, int dig2, int dig3, int multiplier,
+	public ResistorData(int dig1, int dig2, int dig3, int multiplier,
 			int tolerance) {
 		this(dig1, dig2, multiplier, tolerance);
 		this.dig3 = dig3;
@@ -70,7 +70,7 @@ public class resistorData implements Parcelable {
 	}
 
 	// constructor to use when reconstructing object from parcel
-	public resistorData(Parcel in) {
+	public ResistorData(Parcel in) {
 		readFromParcel(in);
 	}
 
@@ -103,12 +103,12 @@ public class resistorData implements Parcelable {
 
 	// Code required by Android
 	public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-		public resistorData createFromParcel(Parcel in) {
-			return new resistorData(in);
+		public ResistorData createFromParcel(Parcel in) {
+			return new ResistorData(in);
 		}
 
-		public resistorData[] newArray(int size) {
-			return new resistorData[size];
+		public ResistorData[] newArray(int size) {
+			return new ResistorData[size];
 		}
 	};
 

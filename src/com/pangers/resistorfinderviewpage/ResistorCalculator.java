@@ -70,16 +70,16 @@ public class ResistorCalculator {
 		return results;
 	}
 
-	public ArrayList<resistorData> findBandColours(BigDecimal data,
+	public ArrayList<ResistorData> findBandColours(BigDecimal data,
 			int toleranceSelection) {
-		ArrayList<resistorData> resistors = new ArrayList<resistorData>();
+		ArrayList<ResistorData> resistors = new ArrayList<ResistorData>();
 		resistors = find4BandColours(data, resistors, toleranceSelection);
 		resistors = find5BandColours(data, resistors, toleranceSelection);
 		return resistors;
 	}
 
-	private ArrayList<resistorData> find4BandColours(BigDecimal data,
-			ArrayList<resistorData> resistors, int toleranceSelection) {
+	private ArrayList<ResistorData> find4BandColours(BigDecimal data,
+			ArrayList<ResistorData> resistors, int toleranceSelection) {
 		BigDecimal maxLimit = new BigDecimal("990000000");
 		BigDecimal hundMill = new BigDecimal("100000000");
 		BigDecimal tenMill = new BigDecimal("10000000");
@@ -100,9 +100,9 @@ public class ResistorCalculator {
 				&& (dataSigFig.compareTo(pointZeroNineFive) > 0)) {
 			dataSigFig = tenth;
 		}
-		if (dataSigFig.compareTo(hundredth) < 0) {
-			dataSigFig = dataSigFig.setScale(2, BigDecimal.ROUND_HALF_UP);
-		}
+//		if (dataSigFig.compareTo(hundredth) < 0) {
+//			dataSigFig = dataSigFig.setScale(2, BigDecimal.ROUND_HALF_UP);
+//		}
 
 		if ((dataSigFig.compareTo(maxLimit) <= 0)) {
 
@@ -146,17 +146,17 @@ public class ResistorCalculator {
 				resistors = fourBandCalculator(resistors, dataSigFig,
 						hundredth, toleranceSelection);
 				return resistors;
-			} else if (dataSigFig.compareTo(hundredth) >= 0) {
-				resistors = fourBandSpecialCase(resistors, dataSigFig,
-						hundredth, toleranceSelection);
-				return resistors;
+//			} else if (dataSigFig.compareTo(hundredth) >= 0) {
+//				resistors = fourBandSpecialCase(resistors, dataSigFig,
+//						hundredth, toleranceSelection);
+//				return resistors;
 			}
 		}
 		return resistors;
 	}
 
-	private ArrayList<resistorData> fourBandCalculator(
-			ArrayList<resistorData> resistors, BigDecimal data,
+	private ArrayList<ResistorData> fourBandCalculator(
+			ArrayList<ResistorData> resistors, BigDecimal data,
 			BigDecimal multiplier, int toleranceSelection) {
 		BigDecimal dig1 = null;
 		BigDecimal dig2 = null;
@@ -174,91 +174,91 @@ public class ResistorCalculator {
 		dig1 = (data.divide(ten)).setScale(0, BigDecimal.ROUND_DOWN);
 		dig2 = data.subtract(dig1.multiply(ten));
 
-		resistors.add(new resistorData(dig1.intValue(), dig2.intValue(),
+		resistors.add(new ResistorData(dig1.intValue(), dig2.intValue(),
 				(log10(multiplier)).intValue(), toleranceSelection));
-		resistors.add(new resistorData(0, dig1.intValue(), dig2.intValue(),
-				(log10(multiplier)).intValue(), toleranceSelection));
+//		resistors.add(new resistorData(0, dig1.intValue(), dig2.intValue(),
+//				(log10(multiplier)).intValue(), toleranceSelection));
 
-		if ((temp.compareTo(ninetyMill) <= 0)
-				&& (temp.compareTo(pointOne) >= 0)) {
-			if (dig2.compareTo(zero) == 0) {
-				resistors.add(new resistorData(0, dig1.intValue(),
-						(log10(multiplier.multiply(ten))).intValue(),
-						toleranceSelection));
-				resistors.add(new resistorData(0, 0, dig1.intValue(),
-						(log10(multiplier.multiply(ten))).intValue(),
-						toleranceSelection));
-			}
-		}
+//		if ((temp.compareTo(ninetyMill) <= 0)
+//				&& (temp.compareTo(pointOne) >= 0)) {
+//			if (dig2.compareTo(zero) == 0) {
+//				resistors.add(new resistorData(0, dig1.intValue(),
+//						(log10(multiplier.multiply(ten))).intValue(),
+//						toleranceSelection));
+//				resistors.add(new resistorData(0, 0, dig1.intValue(),
+//						(log10(multiplier.multiply(ten))).intValue(),
+//						toleranceSelection));
+//			}
+//		}
 		return resistors;
 	}
 
-	private ArrayList<resistorData> fourBandSpecialCase(
-			ArrayList<resistorData> resistors, BigDecimal data,
-			BigDecimal multiplier, int toleranceSelection) {
-		data = data.setScale(2, BigDecimal.ROUND_HALF_UP);
-		data = data.divide(multiplier);
-		switch (data.intValue()) {
-		case 9:
-			resistors.add(new resistorData(0, 9,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 9, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 8:
-			resistors.add(new resistorData(0, 8,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 8, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 7:
-			resistors.add(new resistorData(0, 7,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 7, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 6:
-			resistors.add(new resistorData(0, 6,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 6, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 5:
-			resistors.add(new resistorData(0, 5,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 5, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 4:
-			resistors.add(new resistorData(0, 4,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 4, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 3:
-			resistors.add(new resistorData(0, 3,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 3, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 2:
-			resistors.add(new resistorData(0, 2,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 2, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		case 1:
-			resistors.add(new resistorData(0, 1,
-					(log10(multiplier)).intValue(), toleranceSelection));
-			resistors.add(new resistorData(0, 0, 1, (log10(multiplier))
-					.intValue(), toleranceSelection));
-			break;
-		}
-		return resistors;
-	}
+//	private ArrayList<resistorData> fourBandSpecialCase(
+//			ArrayList<resistorData> resistors, BigDecimal data,
+//			BigDecimal multiplier, int toleranceSelection) {
+//		data = data.setScale(2, BigDecimal.ROUND_HALF_UP);
+//		data = data.divide(multiplier);
+//		switch (data.intValue()) {
+//		case 9:
+//			resistors.add(new resistorData(0, 9,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 9, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 8:
+//			resistors.add(new resistorData(0, 8,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 8, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 7:
+//			resistors.add(new resistorData(0, 7,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 7, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 6:
+//			resistors.add(new resistorData(0, 6,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 6, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 5:
+//			resistors.add(new resistorData(0, 5,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 5, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 4:
+//			resistors.add(new resistorData(0, 4,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 4, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 3:
+//			resistors.add(new resistorData(0, 3,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 3, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 2:
+//			resistors.add(new resistorData(0, 2,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 2, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		case 1:
+//			resistors.add(new resistorData(0, 1,
+//					(log10(multiplier)).intValue(), toleranceSelection));
+//			resistors.add(new resistorData(0, 0, 1, (log10(multiplier))
+//					.intValue(), toleranceSelection));
+//			break;
+//		}
+//		return resistors;
+//	}
 
-	private ArrayList<resistorData> find5BandColours(BigDecimal data,
-			ArrayList<resistorData> resistors, int toleranceSelection) {
+	private ArrayList<ResistorData> find5BandColours(BigDecimal data,
+			ArrayList<ResistorData> resistors, int toleranceSelection) {
 		BigDecimal maxLimit = new BigDecimal("9990000000");
 		BigDecimal bill = new BigDecimal("1000000000");
 		BigDecimal hundMill = new BigDecimal("100000000");
@@ -274,51 +274,51 @@ public class ResistorCalculator {
 		BigDecimal hundredth = tenth.divide(ten);
 		BigDecimal thousandth = hundredth.divide(ten);
 
-		Log.d(TAG, "untouched data is: " + data);
+		
 		BigDecimal dataSigFig = toSignificantFigures(data, 3);
-		Log.d(TAG, "data to 3 sig fig is: " + dataSigFig);
+	
 		if (dataSigFig.compareTo(one) < 0) {
 			dataSigFig = dataSigFig.setScale(0, BigDecimal.ROUND_HALF_UP);
 		}
 		if (dataSigFig.compareTo(maxLimit) <= 0) {
 			if (data.compareTo(bill) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, tenMill,
+				resistors = fiveBandCalculator(resistors, dataSigFig, tenMill,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(hundMill) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, Mill,
+			} else if (dataSigFig.compareTo(hundMill) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, Mill,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(tenMill) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, hundThou,
+			} else if (dataSigFig.compareTo(tenMill) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, hundThou,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(Mill) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, tenThou,
+			} else if (dataSigFig.compareTo(Mill) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, tenThou,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(hundThou) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, thou,
+			} else if (dataSigFig.compareTo(hundThou) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, thou,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(tenThou) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, hund,
+			} else if (dataSigFig.compareTo(tenThou) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, hund,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(thou) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, ten,
+			} else if (dataSigFig.compareTo(thou) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, ten,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(hund) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, one,
+			} else if (dataSigFig.compareTo(hund) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, one,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(ten) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, tenth,
+			} else if (dataSigFig.compareTo(ten) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, tenth,
 						toleranceSelection);
 				return resistors;
-			} else if (data.compareTo(one) >= 0) {
-				resistors = fiveBandCalculator(resistors, data, hundredth,
+			} else if (dataSigFig.compareTo(one) >= 0) {
+				resistors = fiveBandCalculator(resistors, dataSigFig, hundredth,
 						toleranceSelection);
 				return resistors;
 			}
@@ -326,8 +326,8 @@ public class ResistorCalculator {
 		return resistors;
 	}
 
-	private ArrayList<resistorData> fiveBandCalculator(
-			ArrayList<resistorData> resistors, BigDecimal data,
+	private ArrayList<ResistorData> fiveBandCalculator(
+			ArrayList<ResistorData> resistors, BigDecimal data,
 			BigDecimal multiplier, int toleranceSelection) {
 		BigDecimal dig1 = null;
 		BigDecimal dig2 = null;
@@ -341,7 +341,7 @@ public class ResistorCalculator {
 		BigDecimal pointZeroNineNineFive = new BigDecimal("0.0995");
 		BigDecimal pointZeroZeroNineFive = new BigDecimal("0.0095");
 		BigDecimal zero = new BigDecimal("0");
-
+		
 		temp = data;
 		data = (data.divide(multiplier));
 		dig1 = (data.divide(hund)).setScale(0, BigDecimal.ROUND_DOWN);
@@ -349,7 +349,7 @@ public class ResistorCalculator {
 				BigDecimal.ROUND_DOWN);
 		dig3 = data.subtract((dig1.multiply(hund)).add(dig2.multiply(ten)));
 		resistors
-				.add(new resistorData(dig1.intValue(), dig2.intValue(), dig3
+				.add(new ResistorData(dig1.intValue(), dig2.intValue(), dig3
 						.intValue(), (log10(multiplier)).intValue(),
 						toleranceSelection));
 

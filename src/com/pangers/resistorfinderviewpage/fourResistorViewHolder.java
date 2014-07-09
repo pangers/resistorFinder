@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-public class fourResistorViewHolder {
+public class FourResistorViewHolder {
 
 	ImageView fourimageview1 = null;
 	ImageView fourimageview2 = null;
@@ -13,7 +13,7 @@ public class fourResistorViewHolder {
 	ImageView fourimageview4 = null;
 	TextView fourtextview = null;
 
-	fourResistorViewHolder(View row) {
+	FourResistorViewHolder(View row) {
 		this.fourimageview1 = (ImageView) row
 				.findViewById(R.id.fourresultcolour1);
 		this.fourimageview2 = (ImageView) row

@@ -47,7 +47,7 @@ public class ResistorFinderActivity extends FragmentActivity implements
 //			actionBar.setSelectedNavigationItem(0);
 //		}
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
-		pager.setAdapter(new myPagerAdapter(this, getSupportFragmentManager(),
+		pager.setAdapter(new MyPagerAdapter(this, getSupportFragmentManager(),
 				getFragments()));
 	}
 	
@@ -70,9 +70,6 @@ public class ResistorFinderActivity extends FragmentActivity implements
 
 			return true;
 		case R.id.help:
-
-			return true;
-		case R.id.header:
 
 			return true;
 		default:

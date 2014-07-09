@@ -13,7 +13,7 @@ import android.widget.ArrayAdapter;
 
 public class ByValueActivity extends FragmentActivity implements
 		ActionBar.OnNavigationListener,
-		valueEntryFrag.onResistanceEnteredListener {
+		ValueEntryFrag.onResistanceEnteredListener {
 
 	private ActionBar actionBar = null;
 	private ArrayList<String> dropDownMenu = new ArrayList<String>();
@@ -39,11 +39,11 @@ public class ByValueActivity extends FragmentActivity implements
 		actionBar.setListNavigationCallbacks(dropDownAdapter, this);
 		dropdownSelection = getIntent().getIntExtra("DROPDOWN_POS_FROM_MAIN",
 				-1);
-//		if (dropdownSelection != -1) {
-//			actionBar.setSelectedNavigationItem(dropdownSelection);
-//		} else {
-//			actionBar.setSelectedNavigationItem(1);
-//		}
+		// if (dropdownSelection != -1) {
+		// actionBar.setSelectedNavigationItem(dropdownSelection);
+		// } else {
+		// actionBar.setSelectedNavigationItem(1);
+		// }
 
 		if (findViewById(R.id.valueentryframe) != null) {
 			if (savedInstanceState != null) {
@@ -51,12 +51,12 @@ public class ByValueActivity extends FragmentActivity implements
 			}
 			getSupportFragmentManager()
 					.beginTransaction()
-					.add(R.id.valueentryframe, new valueEntryFrag())
-					.add(R.id.valueresultframe, new valueResultFrag(),
+					.add(R.id.valueentryframe, new ValueEntryFrag())
+					.add(R.id.valueresultframe, new ValueResultFrag(),
 							RESULTTAG).commit();
 		}
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -78,9 +78,6 @@ public class ByValueActivity extends FragmentActivity implements
 		case R.id.help:
 
 			return true;
-		case R.id.header:
-
-			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -97,8 +94,8 @@ public class ByValueActivity extends FragmentActivity implements
 	public boolean onNavigationItemSelected(int itemPosition, long itemId) {
 		switch (itemPosition) {
 		case 0:
-//			Intent i = new Intent(this, ResistorFinderActivity.class);
-//			i.putExtra("DROPDOWN_POS_FROM_VALUE", itemPosition);
+			// Intent i = new Intent(this, ResistorFinderActivity.class);
+			// i.putExtra("DROPDOWN_POS_FROM_VALUE", itemPosition);
 			startActivity(new Intent(this, ResistorFinderActivity.class));
 			return true;
 		case 1:
@@ -114,8 +111,8 @@ public class ByValueActivity extends FragmentActivity implements
 	}
 
 	@Override
-	public void onResistanceEntered(ArrayList<resistorData> resistors) {
-		valueResultFrag fragment = (valueResultFrag) getSupportFragmentManager()
+	public void onResistanceEntered(ArrayList<ResistorData> resistors) {
+		ValueResultFrag fragment = (ValueResultFrag) getSupportFragmentManager()
 				.findFragmentByTag(RESULTTAG);
 		if (fragment != null) {
 
@@ -123,8 +120,8 @@ public class ByValueActivity extends FragmentActivity implements
 		}
 	}
 
-//	@Override
-//	public void onBackPressed() {
-//		
-//	}
+	// @Override
+	// public void onBackPressed() {
+	//
+	// }
 }
