@@ -34,7 +34,7 @@
 	</string-array>
 	<string name="ok">OK</string>
 	<string name="bycolourhelp">Select band colours for each column to obtain resistance and tolerance</string>
-	<string name="byvaluehelp">Enter resistance and tolerance to obtain resistor colour code. Nearest 4 and 5 band resistor will be returned.</string>
+	<string name="byvaluehelp">Enter resistance and tolerance to obtain resistor colour code. Nearest 4 and 5 band resistor returned.</string>
 	<string name="black">Black</string>
 	<string name="brown">Brown</string>
 	<string name="red">Red</string>

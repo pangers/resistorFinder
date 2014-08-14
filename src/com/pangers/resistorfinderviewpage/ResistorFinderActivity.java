@@ -24,7 +24,7 @@ public class ResistorFinderActivity extends FragmentActivity implements
 	private int dropdownSelection;
 
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
-	final static String TAG = "ResistorFinderActivity";
+	//final static String TAG = "ResistorFinderActivity";
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

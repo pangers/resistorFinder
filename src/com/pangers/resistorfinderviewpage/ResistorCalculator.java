@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class ResistorCalculator {
 
-	final static String TAG = "ResistorCalculator";
+	//final static String TAG = "ResistorCalculator";
 	final private double[] tolerance = { 10, 5, 1, 2, 0.5, 0.25, 0.1 };
 	private static BigDecimal TEN = new BigDecimal(10);
 	private static BigDecimal LOGTEN = new BigDecimal(Math.log(10));

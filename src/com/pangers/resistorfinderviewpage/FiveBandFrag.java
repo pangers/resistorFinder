@@ -20,7 +20,7 @@ import android.widget.TextView;
 public class FiveBandFrag extends Fragment implements
 		AdapterView.OnItemClickListener {
 
-	static final String TAG = "FiveBandFrag";
+	//static final String TAG = "FiveBandFrag";
 
 	// TextView to show the resistance and tolerance values
 	private TextView resultView;

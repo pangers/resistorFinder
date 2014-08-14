@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
 
 public class CustomAdapter extends ArrayAdapter<Model> {
 
-	static final String TAG = "FourBandFrag";
+	
 	private final Context context;
 	private final ArrayList<Model> modelsArrayList;
 	private int selectedIndex = -1;

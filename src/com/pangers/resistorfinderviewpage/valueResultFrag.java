@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 public class ValueResultFrag extends Fragment {
 
-	final static String TAG = "valueResultFrag";
+	//final static String TAG = "valueResultFrag";
 	final static String RESISTOR_LIST = "resistorList";
 
 	private ListView resultListView = null;

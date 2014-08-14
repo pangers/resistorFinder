@@ -34,6 +34,7 @@ public class ColourCodeActivity extends FragmentActivity {
 		bufferTextView = (TextView) findViewById(R.id.multipliersilver);
 		setMultiplier(bufferTextView, 9);
 		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setTitle(R.string.colourcode);
 	}
 	
 	@Override

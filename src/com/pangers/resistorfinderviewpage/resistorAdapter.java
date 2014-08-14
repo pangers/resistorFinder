@@ -17,7 +17,7 @@ public class ResistorAdapter extends ArrayAdapter<ResistorData> {
 	int counter = 1;
 
 	private final int unselected = -17;
-	final static String TAG = "resistorAdapter";
+	//final static String TAG = "resistorAdapter";
 
 	public ResistorAdapter(Context context, ArrayList<ResistorData> resistors) {
 		super(context, R.layout.bycolourlistitem4, resistors);

@@ -22,7 +22,7 @@ import android.widget.TextView;
 public class FourBandFrag extends Fragment implements
 		AdapterView.OnItemClickListener {
 
-	static final String TAG = "FourBandFrag";
+	//static final String TAG = "FourBandFrag";
 
 	private TextView resultView;
 

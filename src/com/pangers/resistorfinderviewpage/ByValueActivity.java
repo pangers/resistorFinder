@@ -20,7 +20,6 @@ public class ByValueActivity extends FragmentActivity implements
 	private ArrayAdapter<String> dropDownAdapter = null;
 	private int dropdownSelection;
 
-	final static String TAG = "ByValueActivity";
 	final static String RESULTTAG = "resultTag";
 	final static String DROP_DOWN_SELECTION = "dropDownSelection";
 
