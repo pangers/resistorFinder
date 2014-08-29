@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+        android:key="pref_startingActivity"
+        android:title="@string/startingactivity"
+        android:dialogTitle="@string/startingactivity"
+        android:entries="@array/startingactivityentries"
+        android:entryValues="@array/startingactivityvalues"
+        android:defaultValue="0"
+        />
+</PreferenceScreen>

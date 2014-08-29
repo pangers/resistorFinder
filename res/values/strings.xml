@@ -1,55 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="resistorfinder">Resistor Finder</string>
-	<string name="firstband">Band 1</string>
-	<string name="secondband">Band 2</string>
-	<string name="thirdband">Band 3</string>
-	<string name="fourthband">Band 4</string>
-	<string name="fifthband">Band 5</string>
-	<string name="help">Help</string>
-	<string name="colourcode">Colour Code</string>
-	<string name="about">About</string>
-	<string name="fivebandresistor">5 bands</string>
-	<string name="fourbandresistor">4 bands</string>
-	<string name="changemode">Change Mode</string>
-	<string name="tab">\u0009</string>
-	<string name ="resistance">Resistance:</string>
-	<string name="tolerance">Tolerance:</string>
-	<string name="calculate">Calculate</string>
-	
-	<string-array name="tolerancechoices">
-	    <item>\u00B110%</item>
-	    <item>\u00B15%</item>
-	    <item>\u00B11%</item>
-	    <item>\u00B12%</item>
-	    <item>\u00B10.5%</item>
-	    <item>\u00B10.25%</item>
-	    <item>\u00B10.1%</item>
-	</string-array>
-	<string-array name="unitchoices">
-	    <item>ohm</item>
-	    <item>K ohm</item>
-	    <item>M ohm</item>
-	</string-array>
-	<string name="ok">OK</string>
-	<string name="bycolourhelp">Select band colours for each column to obtain resistance and tolerance</string>
-	<string name="byvaluehelp">Enter resistance and tolerance to obtain resistor colour code. Nearest 4 and 5 band resistor returned.</string>
-	<string name="black">Black</string>
-	<string name="brown">Brown</string>
-	<string name="red">Red</string>
-	<string name="orange">Orange</string>
-	<string name="yellow">Yellow</string>
-	<string name="green">Green</string>
-	<string name="blue">Blue</string>
-	<string name="violet">Violet</string>
-	<string name="grey">Grey</string>
-	<string name="white">White</string>
-	<string name="gold">Gold</string>
-	<string name="silver">Silver</string>
-	<string name="colour">Colour</string>
-	<string name="digit">Digit</string>
-	<string name="multiplier">Multiplier</string>
-	<string name="tolerancetable">Tolerance</string>
+    <string name="resistorfinder">Resistor Finder</string>
+    <string name="firstband">Band 1</string>
+    <string name="secondband">Band 2</string>
+    <string name="thirdband">Band 3</string>
+    <string name="fourthband">Band 4</string>
+    <string name="fifthband">Band 5</string>
+    <string name="help">Help</string>
+    <string name="colourcode">Colour Code</string>
+    <string name="about">About</string>
+    <string name="fivebandresistor">5 bands</string>
+    <string name="fourbandresistor">4 bands</string>
+    <string name="changemode">Change Mode</string>
+    <string name="tab">\u0009</string>
+    <string name="resistance">Resistance:</string>
+    <string name="tolerance">Tolerance:</string>
+    <string name="calculate">Calculate</string>
+
+    <string-array name="tolerancechoices">
+        <item>\u00B110%</item>
+        <item>\u00B15%</item>
+        <item>\u00B11%</item>
+        <item>\u00B12%</item>
+        <item>\u00B10.5%</item>
+        <item>\u00B10.25%</item>
+        <item>\u00B10.1%</item>
+    </string-array>
+    <string-array name="unitchoices">
+        <item>ohm</item>
+        <item>K ohm</item>
+        <item>M ohm</item>
+    </string-array>
+
+    <string name="ok">OK</string>
+    <string name="bycolourhelp">Select band colours for each column to obtain resistance and tolerance</string>
+    <string name="byvaluehelp">Enter resistance and tolerance to obtain resistor colour code. Nearest 4 and 5 band resistor returned.</string>
+    <string name="black">Black</string>
+    <string name="brown">Brown</string>
+    <string name="red">Red</string>
+    <string name="orange">Orange</string>
+    <string name="yellow">Yellow</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="violet">Violet</string>
+    <string name="grey">Grey</string>
+    <string name="white">White</string>
+    <string name="gold">Gold</string>
+    <string name="silver">Silver</string>
+    <string name="colour">Colour</string>
+    <string name="digit">Digit</string>
+    <string name="multiplier">Multiplier</string>
+    <string name="tolerancetable">Tolerance</string>
+    <string name="settings">Settings</string>
+    <string name="startingactivity">Starting screen</string>
+
+    <string-array name="startingactivityentries">
+        <item>By Colour</item>
+        <item>By Value</item>
+    </string-array>
+
+    <string-array name="startingactivityvalues">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
 
 </resources>
